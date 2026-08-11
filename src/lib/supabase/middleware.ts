@@ -1,5 +1,6 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
+import { required } from "@/lib/env";
 
 /** Rotas acessíveis sem login. */
 const PUBLIC_PATHS = [
@@ -18,8 +19,11 @@ export async function updateSession(request: NextRequest) {
   let supabaseResponse = NextResponse.next({ request });
 
   const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    required(process.env.NEXT_PUBLIC_SUPABASE_URL, "NEXT_PUBLIC_SUPABASE_URL"),
+    required(
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+      "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+    ),
     {
       cookies: {
         getAll() {
