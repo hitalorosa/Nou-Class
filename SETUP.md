@@ -57,7 +57,16 @@ Esse mesmo bucket serve pras capas dos cursos (campo "URL da imagem de capa" no 
 Assim as senhoras não precisam clicar em link de confirmação (o gate é a sua liberação no painel).
 
 1. Supabase → **Authentication** → **Sign In / Providers** → **Email**.
-2. Desligue **"Confirm email"**. Salve.
+2. Confira que o provider **Email** está **LIGADO** (o botão principal do card).
+3. **Dentro** dele, desligue **"Confirm email"**. Salve.
+
+> ⚠️ São dois controles no mesmo card e é fácil trocar. Desligar o provider
+> inteiro derruba o cadastro por email — o site responde
+> `Unsupported provider: provider is not enabled` e ninguém cria conta.
+>
+> Pra conferir sem adivinhar, esta URL é pública e lista o que está ativo:
+> `https://SEU-PROJETO.supabase.co/auth/v1/settings` (precisa mandar a anon
+> key no header `apikey`). Procure `"email": true` em `external`.
 
 ## 5. Login com Google (opcional, mas recomendado)
 

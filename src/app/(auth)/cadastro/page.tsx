@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
+import { mensagemDeErro } from "@/lib/auth-errors";
 import { Button, Field, Input, Alert, Spinner } from "@/components/ui";
 import { GoogleButton } from "@/components/GoogleButton";
 
@@ -33,11 +34,7 @@ export default function CadastroPage() {
       },
     });
     if (error) {
-      setErro(
-        error.message.includes("already")
-          ? "Esse email já tem conta. Tente entrar."
-          : "Não consegui criar a conta. Confira os dados e tente de novo.",
-      );
+      setErro(mensagemDeErro(error));
       setLoading(false);
       return;
     }

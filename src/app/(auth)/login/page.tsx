@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
+import { mensagemDeErro } from "@/lib/auth-errors";
 import { Button, Field, Input, Alert, Spinner } from "@/components/ui";
 import { GoogleButton } from "@/components/GoogleButton";
 
@@ -24,7 +25,7 @@ export default function LoginPage() {
       password: senha,
     });
     if (error) {
-      setErro("Email ou senha incorretos. Tente de novo.");
+      setErro(mensagemDeErro(error));
       setLoading(false);
       return;
     }
