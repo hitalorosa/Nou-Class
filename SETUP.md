@@ -31,9 +31,12 @@ Faça na ordem. Leva ~30 min na primeira vez.
    NEXT_PUBLIC_SUPABASE_URL=https://xxxx.supabase.co
    NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJ...
    SUPABASE_SERVICE_ROLE_KEY=eyJ...
-   NEXT_PUBLIC_SITE_URL=http://localhost:3000
    NEXT_PUBLIC_HERO_IMAGE_URL=
    ```
+
+   > A URL termina em `.supabase.co` e **para por aí**. Não é o endereço que
+   > aparece em "Data API" com `/rest/v1/` no fim — o `supabase-js` acrescenta
+   > esse pedaço sozinho, e colar ele aqui quebra o site inteiro.
 
    > ⚠️ Nunca comite a `service_role`. O `.env.local` já é ignorado pelo git.
 
@@ -110,10 +113,17 @@ Supabase → **Authentication → URL Configuration**:
 Repositório: [`hitalorosa/Nou-Class`](https://github.com/hitalorosa/Nou-Class).
 
 1. Importe o repo em [vercel.com/new](https://vercel.com/new).
-2. Em **Environment Variables**, adicione as variáveis do `.env.local` (com a `service_role` como secreta). Marque Production + Preview.
-3. Troque `NEXT_PUBLIC_SITE_URL` pela URL final da Vercel.
-4. Deploy. Depois volte no Supabase (passos 5a e 6) e adicione a URL da Vercel nas origins/redirects.
-5. (Opcional) Subdomínio `curso.nouecosmeticos.com.br`: na Vercel → Domains, e crie um CNAME no seu DNS apontando pro Vercel.
+2. Em **Environment Variables**, adicione as variáveis do `.env.local` (com a `service_role` como secreta), marcando **Production + Preview + Development**.
+3. Deploy. Depois volte no Supabase (passos 5a e 6) e adicione a URL da Vercel nas origins/redirects.
+4. (Opcional) Subdomínio `curso.nouecosmeticos.com.br`: na Vercel → Domains, e crie um CNAME no seu DNS apontando pro Vercel.
+
+> **Duas armadilhas que já custaram caro aqui:**
+>
+> - Variáveis `NEXT_PUBLIC_*` são gravadas dentro do JavaScript **durante o
+>   build**. Salvar na Vercel não muda o site no ar — só vale depois de um novo
+>   deploy, e com "Use existing Build Cache" **desmarcado**.
+> - Pra conferir o que está realmente cadastrado, sem depender da tela:
+>   `vercel env ls`. É como se descobriu que o projeto estava sem nenhuma.
 
 ---
 

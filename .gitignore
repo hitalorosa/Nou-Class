@@ -34,3 +34,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# a CLI da Vercel acrescentou o .env* — mantendo o exemplo versionado
+.env*
+!.env.example
