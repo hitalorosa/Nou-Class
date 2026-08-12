@@ -2,8 +2,8 @@ import { Trash2 } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import { getCurrentProfile } from "@/lib/auth";
 import type { Profile } from "@/lib/types";
-import { Button } from "@/components/ui";
 import { ConfirmSubmit } from "@/components/ConfirmSubmit";
+import { PendingButton } from "@/components/PendingButton";
 import {
   grantAccessAction,
   revokeAccessAction,
@@ -57,18 +57,17 @@ export default async function AdminUsuariosPage() {
                       {!isAdmin && !u.access_granted && (
                         <form action={grantAccessAction}>
                           <input type="hidden" name="userId" value={u.id} />
-                          <Button className="px-4 py-2 text-sm">Liberar</Button>
+                          <PendingButton className="inline-flex items-center justify-center gap-2 rounded-xl bg-verde px-4 py-2 text-sm font-bold text-white transition-colors hover:bg-verde-dark disabled:opacity-60">
+                            Liberar
+                          </PendingButton>
                         </form>
                       )}
                       {!isAdmin && u.access_granted && (
                         <form action={revokeAccessAction}>
                           <input type="hidden" name="userId" value={u.id} />
-                          <button
-                            type="submit"
-                            className="rounded-xl border-2 border-black/15 px-4 py-2 text-sm font-bold text-tinta hover:border-ambar hover:text-ambar"
-                          >
+                          <PendingButton className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-black/15 px-4 py-2 text-sm font-bold text-tinta hover:border-ambar hover:text-ambar disabled:opacity-60">
                             Revogar
-                          </button>
+                          </PendingButton>
                         </form>
                       )}
                       {!isSelf && !isAdmin && (

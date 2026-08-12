@@ -13,6 +13,7 @@ import { Field, Input, Textarea, Alert } from "@/components/ui";
 import { SubmitButton } from "@/components/SubmitButton";
 import { AutoResetForm } from "@/components/AutoResetForm";
 import { ConfirmSubmit } from "@/components/ConfirmSubmit";
+import { PendingButton } from "@/components/PendingButton";
 import {
   updateCourseAction,
   createLessonAction,
@@ -176,12 +177,9 @@ export default async function AdminCursoEditPage({
                         name="publish"
                         value={l.is_published ? "0" : "1"}
                       />
-                      <button
-                        type="submit"
-                        className="rounded-lg border-2 border-black/15 px-3 py-1.5 text-xs font-bold text-tinta hover:border-verde hover:text-verde"
-                      >
+                      <PendingButton className="rounded-lg border-2 border-black/15 px-3 py-1.5 text-xs font-bold text-tinta hover:border-verde hover:text-verde disabled:opacity-60">
                         {l.is_published ? "Despublicar" : "Publicar"}
-                      </button>
+                      </PendingButton>
                     </form>
                   )}
 
@@ -267,13 +265,13 @@ function MoveLesson({
       <input type="hidden" name="id" value={id} />
       <input type="hidden" name="courseId" value={courseId} />
       <input type="hidden" name="dir" value={dir} />
-      <button
-        type="submit"
+      <PendingButton
         disabled={disabled}
+        title={dir === "up" ? "Subir" : "Descer"}
         className="text-black/40 hover:text-verde disabled:opacity-20"
       >
         {children}
-      </button>
+      </PendingButton>
     </form>
   );
 }

@@ -25,6 +25,19 @@ const config: Config = {
       borderRadius: {
         xl2: "1.25rem",
       },
+      keyframes: {
+        // Cresce rápido no começo e vai desacelerando, sem nunca chegar a
+        // 100%: quem termina a barra é a página carregando de verdade.
+        "nav-progress": {
+          "0%": { width: "0%" },
+          "25%": { width: "45%" },
+          "60%": { width: "75%" },
+          "100%": { width: "93%" },
+        },
+      },
+      animation: {
+        "nav-progress": "nav-progress 6s cubic-bezier(0.1, 0.8, 0.3, 1) forwards",
+      },
     },
   },
   plugins: [],
