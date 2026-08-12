@@ -24,12 +24,51 @@ export default async function CatalogoPage() {
     lessons: { count: number }[] | null;
   };
 
+  // Progresso por curso: total de aulas e quantas a aluna já assistiu.
+  //
+  // Os dois números saem da MESMA lista de aulas de propósito. O
+  // `lessons(count)` da query acima não serve como denominador porque a RLS
+  // deixa o admin enxergar rascunhos: ele veria "1 de 3" com uma aula que
+  // ninguém mais tem como assistir. Contando aqui, numerador e denominador
+  // olham sempre o mesmo conjunto e a barra não tem como passar de 100%.
+  const totalPorCurso = new Map<string, number>();
+  const assistidasPorCurso = new Map<string, number>();
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (user) {
+    const [{ data: aulas }, { data: progresso }] = await Promise.all([
+      supabase.from("lessons").select("id, course_id").eq("is_published", true),
+      supabase
+        .from("lesson_progress")
+        .select("lesson_id")
+        .eq("user_id", user.id),
+    ]);
+
+    const assistidas = new Set((progresso ?? []).map((p) => p.lesson_id));
+    for (const aula of (aulas ?? []) as { id: string; course_id: string }[]) {
+      totalPorCurso.set(
+        aula.course_id,
+        (totalPorCurso.get(aula.course_id) ?? 0) + 1,
+      );
+      if (assistidas.has(aula.id)) {
+        assistidasPorCurso.set(
+          aula.course_id,
+          (assistidasPorCurso.get(aula.course_id) ?? 0) + 1,
+        );
+      }
+    }
+  }
+
   const courses: CourseCardData[] = ((data ?? []) as Row[]).map((c) => ({
     id: c.id,
     title: c.title,
     description: c.description,
     cover_url: c.cover_url,
-    lessonCount: c.lessons?.[0]?.count ?? 0,
+    lessonCount: totalPorCurso.get(c.id) ?? c.lessons?.[0]?.count ?? 0,
+    watchedCount: assistidasPorCurso.get(c.id) ?? 0,
   }));
 
   return (

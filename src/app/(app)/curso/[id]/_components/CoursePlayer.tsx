@@ -5,6 +5,7 @@ import { Check, Circle, PlayCircle } from "lucide-react";
 import type { Lesson } from "@/lib/types";
 import { youtubeEmbedUrl } from "@/lib/youtube";
 import { setWatched } from "@/app/actions/progress";
+import { ProgressSummary } from "@/components/Progress";
 import { cn } from "@/components/ui";
 
 export function CoursePlayer({
@@ -86,6 +87,10 @@ export function CoursePlayer({
 
       {/* Lista de aulas */}
       <div className="lg:col-span-1">
+        {/* Vive aqui, e não no server component, pra acompanhar o clique em
+            "Marcar como assistida" na hora — sem esperar recarregar a página. */}
+        <ProgressSummary done={watched.size} total={lessons.length} />
+
         <h3 className="mb-3 text-sm font-bold uppercase tracking-wide text-black/40">
           Aulas do curso
         </h3>

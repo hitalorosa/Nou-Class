@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { PlayCircle } from "lucide-react";
+import { PlayCircle, CheckCircle2 } from "lucide-react";
+import { ProgressBar, percentual } from "@/components/Progress";
 
 export type CourseCardData = {
   id: string;
@@ -7,9 +8,13 @@ export type CourseCardData = {
   description: string | null;
   cover_url: string | null;
   lessonCount: number;
+  watchedCount: number;
 };
 
 export function CourseCard({ course }: { course: CourseCardData }) {
+  const concluido =
+    course.lessonCount > 0 && course.watchedCount >= course.lessonCount;
+
   return (
     <Link
       href={`/curso/${course.id}`}
@@ -39,11 +44,36 @@ export function CourseCard({ course }: { course: CourseCardData }) {
           </p>
         )}
         <div className="mt-auto pt-4">
-          <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-verde">
-            <PlayCircle size={16} />
-            {course.lessonCount}{" "}
-            {course.lessonCount === 1 ? "aula" : "aulas"}
-          </span>
+          {course.lessonCount === 0 ? (
+            <span className="text-sm font-semibold text-black/40">
+              Aulas em breve
+            </span>
+          ) : (
+            <>
+              <div className="mb-2 flex items-center justify-between gap-2">
+                <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-verde">
+                  {concluido ? (
+                    <>
+                      <CheckCircle2 size={16} /> Concluído
+                    </>
+                  ) : (
+                    <>
+                      <PlayCircle size={16} />
+                      {course.watchedCount} de {course.lessonCount}{" "}
+                      {course.lessonCount === 1 ? "aula" : "aulas"}
+                    </>
+                  )}
+                </span>
+                <span className="text-xs font-bold text-black/40">
+                  {percentual(course.watchedCount, course.lessonCount)}%
+                </span>
+              </div>
+              <ProgressBar
+                done={course.watchedCount}
+                total={course.lessonCount}
+              />
+            </>
+          )}
         </div>
       </div>
     </Link>

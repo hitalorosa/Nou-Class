@@ -20,10 +20,15 @@ export default async function CursoPage({
 
   if (!course) notFound();
 
+  // `is_published` explícito: esta é a visão da aluna. A RLS já esconde
+  // rascunho de quem não é admin, mas o admin usa "Ver como aluna" pra
+  // conferir o curso — e aí precisa ver o mesmo que ela vê, senão a barra
+  // de progresso conta aula que ninguém consegue assistir.
   const { data: lessonsData } = await supabase
     .from("lessons")
     .select("*")
     .eq("course_id", course.id)
+    .eq("is_published", true)
     .order("position", { ascending: true });
 
   const lessons = (lessonsData as Lesson[]) ?? [];
