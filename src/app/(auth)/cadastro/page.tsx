@@ -15,6 +15,7 @@ export default function CadastroPage() {
   const [senha, setSenha] = useState("");
   const [erro, setErro] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [confirmarEmail, setConfirmarEmail] = useState(false);
 
   async function cadastrar(e: React.FormEvent) {
     e.preventDefault();
@@ -25,7 +26,7 @@ export default function CadastroPage() {
     }
     setLoading(true);
     const supabase = createClient();
-    const { error } = await supabase.auth.signUp({
+    const { data, error } = await supabase.auth.signUp({
       email: email.trim(),
       password: senha,
       options: {
@@ -38,9 +39,42 @@ export default function CadastroPage() {
       setLoading(false);
       return;
     }
-    // Confirmação de email está desligada → já entra logada.
+    // Com "Confirm email" LIGADO no Supabase o signUp não devolve sessão: a
+    // pessoa só entra depois de clicar no link do email. Empurrar pra "/" nesse
+    // caso faria o middleware jogar ela de volta no login, sem explicação
+    // nenhuma. Então o fluxo se adapta ao que o Supabase respondeu.
+    if (!data.session) {
+      setConfirmarEmail(true);
+      setLoading(false);
+      return;
+    }
+
+    // Sem confirmação → já entra logada e cai na tela de "aguardando liberação".
     router.push("/");
     router.refresh();
+  }
+
+  if (confirmarEmail) {
+    return (
+      <div className="space-y-5 text-center">
+        <div className="text-5xl">📩</div>
+        <h1 className="text-2xl font-bold text-tinta">Confirme seu email</h1>
+        <Alert kind="success">
+          Enviamos um link para <strong>{email.trim()}</strong>. Abra o email e
+          clique no link para ativar sua conta.
+        </Alert>
+        <p className="text-sm text-black/60">
+          Não chegou? Espere um minutinho e olhe na caixa de <strong>spam</strong> ou
+          lixo eletrônico — é onde costuma cair.
+        </p>
+        <Link
+          href="/login"
+          className="inline-block font-semibold text-verde hover:underline"
+        >
+          Voltar para o login
+        </Link>
+      </div>
+    );
   }
 
   return (
