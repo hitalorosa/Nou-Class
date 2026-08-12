@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import type { Course, Lesson } from "@/lib/types";
-import { Field, Input, Textarea } from "@/components/ui";
+import { Field, Input, Textarea, Alert } from "@/components/ui";
 import { SubmitButton } from "@/components/SubmitButton";
 import { AutoResetForm } from "@/components/AutoResetForm";
 import { ConfirmSubmit } from "@/components/ConfirmSubmit";
@@ -24,8 +24,10 @@ import {
 
 export default async function AdminCursoEditPage({
   params,
+  searchParams,
 }: {
   params: { id: string };
+  searchParams: { erro?: string };
 }) {
   const supabase = createClient();
 
@@ -51,6 +53,17 @@ export default async function AdminCursoEditPage({
       >
         <ChevronLeft size={16} /> Voltar aos cursos
       </Link>
+
+      {searchParams.erro === "link" && (
+        <Alert kind="error">
+          <strong>Não consegui ler esse link do YouTube.</strong> Nada foi
+          alterado — a aula continua como estava. Copie o endereço da barra do
+          navegador na página do vídeo (formato{" "}
+          <code>https://youtu.be/ABC123</code> ou{" "}
+          <code>youtube.com/watch?v=ABC123</code>) e cole de novo. Link de
+          playlist ou de canal não serve: precisa ser o do vídeo.
+        </Alert>
+      )}
 
       {/* Editar dados do curso */}
       <form
@@ -199,9 +212,14 @@ export default async function AdminCursoEditPage({
                       label="Link do vídeo (YouTube)"
                       hint="Deixe em branco para voltar ao standby."
                     >
+                      {/* Mostra a URL completa, não o ID cru: o campo se chama
+                          "Link do vídeo" e voltar com `fae8g3f8w8Y` na tela
+                          parece que o link foi truncado ou perdido. */}
                       <Input
                         name="youtubeUrl"
-                        defaultValue={l.youtube_id ?? ""}
+                        defaultValue={
+                          l.youtube_id ? `https://youtu.be/${l.youtube_id}` : ""
+                        }
                         placeholder="https://youtu.be/…"
                       />
                     </Field>
