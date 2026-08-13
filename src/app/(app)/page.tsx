@@ -88,11 +88,15 @@ export default async function CatalogoPage() {
               como profissional. Aulas curtas, prática e Nouê do começo ao fim.
             </p>
           </div>
-          <div className="relative order-1 aspect-[4/3] md:order-2 md:aspect-auto md:min-h-[380px]">
+          {/* Quadro na proporção da foto (~1:1), não o contrário.
+              Antes era 4:3 no celular e ~1,39:1 no desktop, o que cortava
+              cerca de 30% da altura de uma imagem quase quadrada — e o que
+              saía era justamente a cliente, na base do enquadramento. */}
+          <div className="relative order-1 aspect-square md:order-2 md:aspect-auto md:min-h-[500px]">
             {HERO_URL ? (
               <Image
                 src={HERO_URL}
-                alt="Cabeleireira em salão minimalista"
+                alt="Cabeleireira da Nouê aplicando coloração no cabelo de uma cliente"
                 fill
                 priority
                 sizes="(min-width: 768px) 50vw, 100vw"
