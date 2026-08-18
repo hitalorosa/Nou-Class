@@ -22,7 +22,7 @@ export default async function AdminUsuariosPage() {
 
   return (
     <div>
-      <h1 className="mb-1 font-display text-[30px] font-extrabold text-tinta">Usuárias</h1>
+      <h1 className="mb-1 text-[30px] font-extrabold text-tinta">Usuárias</h1>
       <p className="mb-6 text-[17px] text-grafite">
         Libere o acesso de quem se cadastrou. Quem está liberado vê todos os
         cursos publicados.
@@ -30,7 +30,7 @@ export default async function AdminUsuariosPage() {
 
       <div className="overflow-hidden rounded-xl2 border border-tinta/10 bg-white">
         <table className="w-full text-left text-sm">
-          <thead className="border-b border-tinta/10 bg-painel font-display text-[13px] uppercase tracking-[0.08em] text-grafite">
+          <thead className="border-b border-tinta/10 bg-painel text-[13px] uppercase tracking-[0.08em] text-grafite">
             <tr>
               <th className="px-4 py-3">Pessoa</th>
               <th className="px-4 py-3">Status</th>
@@ -44,7 +44,7 @@ export default async function AdminUsuariosPage() {
               return (
                 <tr key={u.id} className="align-middle">
                   <td className="px-4 py-3">
-                    <div className="font-display font-bold text-tinta">
+                    <div className="font-bold text-tinta">
                       {u.full_name || "—"}
                     </div>
                     <div className="text-grafite">{u.email}</div>
@@ -57,7 +57,7 @@ export default async function AdminUsuariosPage() {
                       {!isAdmin && !u.access_granted && (
                         <form action={grantAccessAction}>
                           <input type="hidden" name="userId" value={u.id} />
-                          <PendingButton className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-[13px] bg-ancora px-5 font-display text-[16px] font-bold text-white transition-colors hover:bg-ancora-dark disabled:opacity-60">
+                          <PendingButton className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-[13px] bg-ancora px-5 text-[16px] font-bold text-white transition-colors hover:bg-ancora-dark disabled:opacity-60">
                             Liberar
                           </PendingButton>
                         </form>
@@ -65,7 +65,7 @@ export default async function AdminUsuariosPage() {
                       {!isAdmin && u.access_granted && (
                         <form action={revokeAccessAction}>
                           <input type="hidden" name="userId" value={u.id} />
-                          <PendingButton className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-[13px] border-2 border-tinta/[0.12] px-4 font-display text-[16px] font-bold text-tinta hover:border-tinta hover:bg-tinta hover:text-white disabled:opacity-60">
+                          <PendingButton className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-[13px] border-2 border-tinta/[0.12] px-4 text-[16px] font-bold text-tinta hover:border-tinta hover:bg-tinta hover:text-white disabled:opacity-60">
                             Revogar
                           </PendingButton>
                         </form>
@@ -101,7 +101,7 @@ function StatusBadge({ profile }: { profile: Profile }) {
   // Cada estado tem ícone + palavra: quem não distingue as cores continua
   // conseguindo separar aguardando de liberada.
   const base =
-    "inline-flex items-center gap-2 rounded-full px-3 py-1.5 font-display text-[15px] font-bold";
+    "inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-[15px] font-bold";
 
   if (profile.role === "admin") {
     return <span className={`${base} bg-tinta text-white`}>★ Admin</span>;

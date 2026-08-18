@@ -50,7 +50,7 @@ export default async function AdminCursoEditPage({
     <div className="space-y-8">
       <Link
         href="/admin/cursos"
-        className="inline-flex min-h-[44px] items-center gap-2 font-display text-[17px] font-bold text-ancora hover:text-ancora-dark"
+        className="inline-flex min-h-[44px] items-center gap-2 text-[17px] font-bold text-ancora hover:text-ancora-dark"
       >
         <ChevronLeft size={16} /> Voltar aos cursos
       </Link>
@@ -72,7 +72,7 @@ export default async function AdminCursoEditPage({
         className="space-y-4 rounded-xl2 border border-tinta/10 bg-white p-6"
       >
         <input type="hidden" name="id" value={course.id} />
-        <h2 className="font-display text-[19px] font-bold text-tinta">Dados do curso</h2>
+        <h2 className="text-[19px] font-bold text-tinta">Dados do curso</h2>
         <Field label="Título">
           <Input name="title" required defaultValue={course.title} />
         </Field>
@@ -97,7 +97,7 @@ export default async function AdminCursoEditPage({
         className="space-y-4 rounded-xl2 border border-tinta/10 bg-white p-6"
       >
         <input type="hidden" name="courseId" value={course.id} />
-        <h2 className="flex items-center gap-2 font-display text-[19px] font-bold text-tinta">
+        <h2 className="flex items-center gap-2 text-[19px] font-bold text-tinta">
           <Plus size={18} className="text-ancora" /> Nova aula
         </h2>
         <Field label="Título da aula">
@@ -119,7 +119,7 @@ export default async function AdminCursoEditPage({
 
       {/* Lista de aulas */}
       <div>
-        <h2 className="mb-3 font-display text-[21px] font-bold text-tinta">
+        <h2 className="mb-3 text-[21px] font-bold text-tinta">
           Aulas ({lessons.length})
         </h2>
         <div className="overflow-hidden rounded-xl2 border border-tinta/10 bg-white">
@@ -147,20 +147,20 @@ export default async function AdminCursoEditPage({
                   </div>
 
                   <div className="min-w-0 flex-1">
-                    <div className="truncate font-display font-bold text-tinta">
+                    <div className="truncate font-bold text-tinta">
                       {l.title}
                     </div>
                     <div className="flex items-center gap-2 text-xs">
                       {!l.youtube_id ? (
-                        <span className="font-display font-bold text-ambar-ink">
+                        <span className="font-bold text-ambar-ink">
                           ⏸ Standby (sem vídeo)
                         </span>
                       ) : l.is_published ? (
-                        <span className="font-display font-bold text-ancora-dark">
+                        <span className="font-bold text-ancora-dark">
                           ● Publicada
                         </span>
                       ) : (
-                        <span className="font-display font-bold text-grafite">
+                        <span className="font-bold text-grafite">
                           ○ Rascunho
                         </span>
                       )}
@@ -177,7 +177,7 @@ export default async function AdminCursoEditPage({
                         name="publish"
                         value={l.is_published ? "0" : "1"}
                       />
-                      <PendingButton className="min-h-[44px] rounded-[13px] border-2 border-tinta/[0.12] px-4 font-display text-[16px] font-bold text-tinta hover:border-ancora hover:text-ancora disabled:opacity-60">
+                      <PendingButton className="min-h-[44px] rounded-[13px] border-2 border-tinta/[0.12] px-4 text-[16px] font-bold text-tinta hover:border-ancora hover:text-ancora disabled:opacity-60">
                         {l.is_published ? "Despublicar" : "Publicar"}
                       </PendingButton>
                     </form>
@@ -194,7 +194,7 @@ export default async function AdminCursoEditPage({
 
                 {/* editar aula (expansível) */}
                 <details className="mt-2">
-                  <summary className="inline-flex min-h-[44px] cursor-pointer select-none items-center font-display text-[16px] font-bold text-ancora hover:text-ancora-dark">
+                  <summary className="inline-flex min-h-[44px] cursor-pointer select-none items-center text-[16px] font-bold text-ancora hover:text-ancora-dark">
                     Editar aula
                   </summary>
                   <form

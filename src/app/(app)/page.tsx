@@ -77,10 +77,10 @@ export default async function CatalogoPage() {
       <div className="mb-10 overflow-hidden rounded-xl2 border border-tinta/5 bg-white shadow-[0_2px_10px_rgba(26,26,26,.05)]">
         <div className="grid grid-cols-1 md:grid-cols-2">
           <div className="order-2 flex flex-col justify-center gap-4 p-8 md:order-1 md:p-12">
-            <p className="font-display text-[13px] font-bold uppercase tracking-[0.14em] text-ancora">
+            <p className="text-[13px] font-bold uppercase tracking-[0.14em] text-ancora">
               Seus cursos liberados
             </p>
-            <h1 className="font-display text-[34px] font-extrabold leading-[1.05] tracking-tight text-tinta md:text-[51px] md:leading-[1.03]">
+            <h1 className="text-[34px] font-extrabold leading-[1.05] tracking-tight text-tinta md:text-[51px] md:leading-[1.03]">
               {primeiroNome ? `Oi, ${primeiroNome}.` : "Bem-vinda."}
               <br />
               Continue de onde parou.
@@ -108,14 +108,14 @@ export default async function CatalogoPage() {
         </div>
       </div>
 
-      <h2 className="mb-6 font-display text-[23px] font-bold text-tinta md:text-[30px]">
+      <h2 className="mb-6 text-[23px] font-bold text-tinta md:text-[30px]">
         Cursos
       </h2>
 
       {courses.length === 0 ? (
         <div className="rounded-xl2 border border-dashed border-tinta/15 bg-white/60 px-6 py-16 text-center">
           <div className="text-5xl">✦</div>
-          <p className="mt-4 font-display text-[19px] font-bold text-tinta">
+          <p className="mt-4 text-[19px] font-bold text-tinta">
             Os cursos estão chegando!
           </p>
           <p className="mt-1 text-grafite">

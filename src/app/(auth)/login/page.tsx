@@ -36,7 +36,7 @@ export default function LoginPage() {
   return (
     <div className="space-y-6">
       <div className="space-y-1 text-center">
-        <h1 className="font-display text-[30px] font-extrabold leading-tight text-tinta sm:text-[34px]">Bom te ver aqui</h1>
+        <h1 className="text-[30px] font-extrabold leading-tight text-tinta sm:text-[34px]">Bom te ver aqui</h1>
         <p className="text-grafite">Entre para continuar seus cursos</p>
       </div>
 

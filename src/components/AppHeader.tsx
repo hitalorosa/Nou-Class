@@ -16,7 +16,7 @@ export function AppHeader({ profile }: { profile: Profile }) {
           {profile.role === "admin" && (
             <Link
               href="/admin"
-              className="inline-flex min-h-[44px] items-center rounded-[13px] bg-roxo px-4 font-display text-[16px] font-bold text-white transition-opacity hover:opacity-90"
+              className="inline-flex min-h-[44px] items-center rounded-[13px] bg-roxo px-4 text-[16px] font-bold text-white transition-opacity hover:opacity-90"
             >
               Painel
             </Link>

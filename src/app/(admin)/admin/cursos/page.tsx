@@ -31,7 +31,7 @@ export default async function AdminCursosPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="mb-1 font-display text-[30px] font-extrabold text-tinta">Cursos</h1>
+        <h1 className="mb-1 text-[30px] font-extrabold text-tinta">Cursos</h1>
         <p className="text-[17px] text-grafite">
           Crie cursos e organize as aulas. Só cursos publicados aparecem para as
           alunas.
@@ -43,7 +43,7 @@ export default async function AdminCursosPage() {
         action={createCourseAction}
         className="space-y-4 rounded-xl2 border border-tinta/10 bg-white p-6"
       >
-        <h2 className="flex items-center gap-2 font-display text-[19px] font-bold text-tinta">
+        <h2 className="flex items-center gap-2 text-[19px] font-bold text-tinta">
           <Plus size={18} className="text-ancora" /> Novo curso
         </h2>
         <Field label="Título do curso">
@@ -79,18 +79,18 @@ export default async function AdminCursosPage() {
               </div>
 
               <div className="min-w-0 flex-1">
-                <div className="truncate font-display font-bold text-tinta">{c.title}</div>
+                <div className="truncate font-bold text-tinta">{c.title}</div>
                 <div className="text-[15px] text-grafite">
                   {c.lessons?.[0]?.count ?? 0} aula(s)
                 </div>
               </div>
 
               {c.is_published ? (
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-ancora-line bg-ancora-light px-3 py-1.5 font-display text-[15px] font-bold text-ancora-dark">
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-ancora-line bg-ancora-light px-3 py-1.5 text-[15px] font-bold text-ancora-dark">
                   ✓ Publicado
                 </span>
               ) : (
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-tinta/10 bg-painel px-3 py-1.5 font-display text-[15px] font-bold text-grafite">
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-tinta/10 bg-painel px-3 py-1.5 text-[15px] font-bold text-grafite">
                   ○ Rascunho
                 </span>
               )}
@@ -102,14 +102,14 @@ export default async function AdminCursosPage() {
                   name="publish"
                   value={c.is_published ? "0" : "1"}
                 />
-                <PendingButton className="min-h-[44px] rounded-[13px] border-2 border-tinta/[0.12] px-4 font-display text-[16px] font-bold text-tinta hover:border-ancora hover:text-ancora disabled:opacity-60">
+                <PendingButton className="min-h-[44px] rounded-[13px] border-2 border-tinta/[0.12] px-4 text-[16px] font-bold text-tinta hover:border-ancora hover:text-ancora disabled:opacity-60">
                   {c.is_published ? "Despublicar" : "Publicar"}
                 </PendingButton>
               </form>
 
               <Link
                 href={`/admin/cursos/${c.id}`}
-                className="inline-flex min-h-[44px] items-center gap-1.5 rounded-[13px] bg-roxo px-4 font-display text-[16px] font-bold text-white transition-opacity hover:opacity-90"
+                className="inline-flex min-h-[44px] items-center gap-1.5 rounded-[13px] bg-roxo px-4 text-[16px] font-bold text-white transition-opacity hover:opacity-90"
               >
                 <Pencil size={14} /> Editar
               </Link>

@@ -58,7 +58,7 @@ export default function CadastroPage() {
     return (
       <div className="space-y-5 text-center">
         <div className="text-5xl">📩</div>
-        <h1 className="font-display text-[30px] font-extrabold leading-tight text-tinta sm:text-[34px]">Confirme seu email</h1>
+        <h1 className="text-[30px] font-extrabold leading-tight text-tinta sm:text-[34px]">Confirme seu email</h1>
         <Alert kind="success">
           Enviamos um link para <strong>{email.trim()}</strong>. Abra o email e
           clique no link para ativar sua conta.
@@ -80,7 +80,7 @@ export default function CadastroPage() {
   return (
     <div className="space-y-6">
       <div className="space-y-1 text-center">
-        <h1 className="font-display text-[30px] font-extrabold leading-tight text-tinta sm:text-[34px]">Criar minha conta</h1>
+        <h1 className="text-[30px] font-extrabold leading-tight text-tinta sm:text-[34px]">Criar minha conta</h1>
         <p className="text-grafite">É rapidinho. Leva menos de 1 minuto.</p>
       </div>
 

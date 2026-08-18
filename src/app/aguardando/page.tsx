@@ -20,7 +20,7 @@ export default async function AguardandoPage() {
       <AppHeader profile={profile} />
       <main className="mx-auto flex max-w-xl flex-col items-center px-4 py-20 text-center">
         <div className="text-6xl">✦</div>
-        <h1 className="mt-6 font-display text-[30px] font-extrabold leading-tight text-tinta sm:text-[41px]">
+        <h1 className="mt-6 text-[30px] font-extrabold leading-tight text-tinta sm:text-[41px]">
           {primeiroNome ? `${primeiroNome}, seu` : "Seu"} cadastro está em análise
         </h1>
         <p className="mt-4 text-[19px] leading-relaxed text-grafite">

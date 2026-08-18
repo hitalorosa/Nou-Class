@@ -28,7 +28,7 @@ export function Logo({
       role="img"
       aria-label="Nouê Estrelas"
       className={cn(
-        "inline-flex items-center font-display tracking-[0.04em] text-tinta",
+        "inline-flex items-center tracking-[0.04em] text-tinta",
         grande ? "gap-2.5 text-[27px] sm:text-[38px]" : "gap-1.5 text-[17px] sm:text-[19px]",
         className,
       )}

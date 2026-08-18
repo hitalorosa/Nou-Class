@@ -1,20 +1,20 @@
 import type { Metadata } from "next";
-import { Archivo, Source_Sans_3 } from "next/font/google";
+import localFont from "next/font/local";
 import { NavProgress } from "@/components/NavProgress";
 import "./globals.css";
 
-// Auto-hospedadas pelo Next: sem ida a CDN externo no primeiro carregamento,
-// que é justamente onde a conexão da aluna é pior. Ambas variáveis e OFL.
-const archivo = Archivo({
-  subsets: ["latin"],
-  variable: "--fonte-titulo",
+/**
+ * Satoshi — a fonte da Nouê. Variável, um arquivo só de 42 KB cobrindo os
+ * pesos 300 a 900, servida pelo nosso próprio domínio via next/font.
+ *
+ * O CDN da Fontshare ficava fora, e é no primeiro carregamento que a conexão
+ * da aluna é pior: uma ida a outro servidor antes de a página desenhar o texto.
+ */
+const satoshi = localFont({
+  src: "./fonts/Satoshi-Variable.woff2",
+  variable: "--fonte",
   display: "swap",
-});
-
-const sourceSans = Source_Sans_3({
-  subsets: ["latin"],
-  variable: "--fonte-corpo",
-  display: "swap",
+  weight: "300 900",
 });
 
 export const metadata: Metadata = {
@@ -28,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className={`${archivo.variable} ${sourceSans.variable}`}>
+    <html lang="pt-BR" className={satoshi.variable}>
       <body className="min-h-screen bg-blush font-sans text-tinta antialiased">
         <NavProgress />
         {children}

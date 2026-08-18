@@ -30,7 +30,7 @@ export function CourseCard({ course }: { course: CourseCardData }) {
         ) : (
           // Sem capa: o título vira a capa sobre o gradiente roxo→âncora-escura.
           <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-roxo to-ancora-dark p-5">
-            <span className="text-center font-display text-[23px] font-extrabold leading-tight text-white">
+            <span className="text-center text-[23px] font-extrabold leading-tight text-white">
               {course.title}
             </span>
           </div>
@@ -38,7 +38,7 @@ export function CourseCard({ course }: { course: CourseCardData }) {
       </div>
 
       <div className="flex flex-1 flex-col gap-3 p-5">
-        <h3 className="font-display text-[19px] font-bold leading-tight text-tinta">
+        <h3 className="text-[19px] font-bold leading-tight text-tinta">
           {course.title}
         </h3>
         {course.description && (
@@ -57,11 +57,11 @@ export function CourseCard({ course }: { course: CourseCardData }) {
             <div className="flex flex-col gap-2.5">
               <div className="flex items-center justify-between gap-3">
                 {concluido ? (
-                  <span className="flex items-center gap-2 font-display text-[16px] font-bold text-roxo">
+                  <span className="flex items-center gap-2 text-[16px] font-bold text-roxo">
                     <Estrela className="h-5 w-5" /> Concluído
                   </span>
                 ) : (
-                  <span className="flex items-center gap-2 font-display text-[16px] font-bold text-ancora">
+                  <span className="flex items-center gap-2 text-[16px] font-bold text-ancora">
                     <span className="flex h-5 w-5 items-center justify-center rounded-full bg-ancora text-[9px] text-white">
                       ▶
                     </span>

@@ -34,8 +34,9 @@ const config: Config = {
         painel: "#F7F3F5", // fundo do admin
       },
       fontFamily: {
-        sans: ["var(--fonte-corpo)", "ui-sans-serif", "system-ui", "sans-serif"],
-        display: ["var(--fonte-titulo)", "ui-sans-serif", "system-ui", "sans-serif"],
+        // Uma família só: a Satoshi da Nouê. Título e corpo se separam pelo
+        // PESO (900 e 400), não por famílias diferentes.
+        sans: ["var(--fonte)", "ui-sans-serif", "system-ui", "sans-serif"],
       },
       borderRadius: {
         xl2: "1.25rem",

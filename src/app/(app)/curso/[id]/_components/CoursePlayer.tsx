@@ -58,7 +58,7 @@ export function CoursePlayer({
 
         <div className="mt-5 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div>
-            <h2 className="font-display text-[21px] font-bold text-tinta">
+            <h2 className="text-[21px] font-bold text-tinta">
               {selected.title}
             </h2>
             {selected.description && (
@@ -70,7 +70,7 @@ export function CoursePlayer({
           <button
             onClick={toggleWatched}
             className={cn(
-              "inline-flex min-h-[52px] shrink-0 items-center justify-center gap-2 rounded-[13px] border-2 px-5 font-display text-[17px] font-bold transition-colors",
+              "inline-flex min-h-[52px] shrink-0 items-center justify-center gap-2 rounded-[13px] border-2 px-5 text-[17px] font-bold transition-colors",
               isWatched
                 ? "border-ancora bg-ancora text-white hover:border-ancora-dark hover:bg-ancora-dark"
                 : "border-ancora bg-white text-ancora hover:bg-ancora hover:text-white",
@@ -93,7 +93,7 @@ export function CoursePlayer({
             "Marcar como assistida" na hora — sem esperar recarregar a página. */}
         <ProgressSummary done={watched.size} total={lessons.length} />
 
-        <h2 className="mb-3 font-display text-[21px] font-bold text-tinta">
+        <h2 className="mb-3 text-[21px] font-bold text-tinta">
           Aulas
         </h2>
         <ol className="flex flex-col gap-2.5">

@@ -54,13 +54,13 @@ export default async function CursoPage({
     <div>
       <Link
         href="/"
-        className="mb-5 inline-flex min-h-[44px] items-center gap-2 font-display text-[17px] font-bold text-ancora hover:text-ancora-dark"
+        className="mb-5 inline-flex min-h-[44px] items-center gap-2 text-[17px] font-bold text-ancora hover:text-ancora-dark"
       >
         <ChevronLeft size={16} /> Voltar aos cursos
       </Link>
 
       <div className="mb-6">
-        <h1 className="font-display text-[30px] font-extrabold leading-tight tracking-tight text-tinta sm:text-[41px]">
+        <h1 className="text-[30px] font-extrabold leading-tight tracking-tight text-tinta sm:text-[41px]">
           {course.title}
         </h1>
         {course.description && (

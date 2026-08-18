@@ -79,12 +79,12 @@ export function ProgressSummary({
 
   return (
     <div className="mb-4 flex flex-col gap-2.5 rounded-xl2 border border-tinta/5 bg-white p-5 shadow-[0_2px_10px_rgba(26,26,26,.05)]">
-      <span className="font-display text-[14px] font-bold uppercase tracking-[0.06em] text-grafite">
+      <span className="text-[14px] font-bold uppercase tracking-[0.06em] text-grafite">
         {completo ? "Curso concluído" : "Meu progresso"}
       </span>
       <span
         className={cn(
-          "font-display text-[41px] font-extrabold leading-none",
+          "text-[41px] font-extrabold leading-none",
           completo ? "text-roxo" : "text-ancora",
         )}
       >

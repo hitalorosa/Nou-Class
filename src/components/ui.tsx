@@ -21,7 +21,7 @@ export function Button({
 }: ButtonProps) {
   // min-h-[52px]: o alvo de toque do design, com folga sobre os 44px mínimos.
   const base =
-    "inline-flex min-h-[52px] items-center justify-center gap-3 rounded-[13px] px-6 font-display text-[17px] font-bold transition-colors disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ancora-light focus-visible:ring-offset-0";
+    "inline-flex min-h-[52px] items-center justify-center gap-3 rounded-[13px] px-6 text-[17px] font-bold transition-colors disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ancora-light focus-visible:ring-offset-0";
   const variants: Record<string, string> = {
     primary: "bg-ancora text-white hover:bg-ancora-dark",
     secondary:
@@ -74,7 +74,7 @@ export function Field({
 }) {
   return (
     <label htmlFor={htmlFor} className="block">
-      <span className="mb-1.5 block font-display text-[14px] font-bold text-tinta">
+      <span className="mb-1.5 block text-[14px] font-bold text-tinta">
         {label}
       </span>
       {children}

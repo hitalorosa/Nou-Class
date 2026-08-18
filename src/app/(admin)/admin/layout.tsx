@@ -23,14 +23,14 @@ export default async function AdminLayout({
             <Link href="/admin" aria-label="Painel">
               <Logo />
             </Link>
-            <span className="rounded-md bg-tinta px-2 py-1 font-display text-[12px] font-bold uppercase tracking-[0.1em] text-white">
+            <span className="rounded-md bg-tinta px-2 py-1 text-[12px] font-bold uppercase tracking-[0.1em] text-white">
               Admin
             </span>
           </div>
           <div className="flex items-center gap-3 sm:gap-[18px]">
             <Link
               href="/"
-              className="hidden font-display text-[16px] font-bold text-grafite hover:text-ancora sm:inline"
+              className="hidden text-[16px] font-bold text-grafite hover:text-ancora sm:inline"
             >
               Ver como aluna
             </Link>
@@ -63,7 +63,7 @@ function AdminTab({
   return (
     <Link
       href={href}
-      className="inline-flex min-h-[44px] items-center border-b-[3px] border-transparent font-display text-[17px] font-bold text-grafite transition-colors hover:border-ancora hover:text-tinta"
+      className="inline-flex min-h-[44px] items-center border-b-[3px] border-transparent text-[17px] font-bold text-grafite transition-colors hover:border-ancora hover:text-tinta"
     >
       {children}
     </Link>

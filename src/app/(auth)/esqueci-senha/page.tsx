@@ -26,7 +26,7 @@ export default function EsqueciSenhaPage() {
     return (
       <div className="space-y-5 text-center">
         <div className="text-5xl">📬</div>
-        <h1 className="font-display text-[30px] font-extrabold leading-tight text-tinta sm:text-[34px]">Confira seu email</h1>
+        <h1 className="text-[30px] font-extrabold leading-tight text-tinta sm:text-[34px]">Confira seu email</h1>
         <p className="text-grafite">
           Se existir uma conta com <strong>{email}</strong>, enviamos um link
           para você criar uma senha nova. Pode demorar alguns minutinhos.
@@ -47,7 +47,7 @@ export default function EsqueciSenhaPage() {
   return (
     <div className="space-y-6">
       <div className="space-y-1 text-center">
-        <h1 className="font-display text-[30px] font-extrabold leading-tight text-tinta sm:text-[34px]">Esqueceu a senha?</h1>
+        <h1 className="text-[30px] font-extrabold leading-tight text-tinta sm:text-[34px]">Esqueceu a senha?</h1>
         <p className="text-grafite">
           Sem problema. Digite seu email que a gente te manda um link.
         </p>

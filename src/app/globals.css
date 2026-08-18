@@ -20,14 +20,9 @@ html {
 
 body {
   color: var(--noue-tinta);
-  font-family: var(--fonte-corpo), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--fonte), ui-sans-serif, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-}
-
-/* Títulos, rótulos e botões usam a Archivo. */
-h1, h2, h3, h4, .fonte-titulo {
-  font-family: var(--fonte-titulo), ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer utilities {

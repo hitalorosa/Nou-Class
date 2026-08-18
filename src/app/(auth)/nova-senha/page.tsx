@@ -40,7 +40,7 @@ export default function NovaSenhaPage() {
   return (
     <div className="space-y-6">
       <div className="space-y-1 text-center">
-        <h1 className="font-display text-[30px] font-extrabold leading-tight text-tinta sm:text-[34px]">Criar senha nova</h1>
+        <h1 className="text-[30px] font-extrabold leading-tight text-tinta sm:text-[34px]">Criar senha nova</h1>
         <p className="text-grafite">Digite a nova senha duas vezes.</p>
       </div>
 
