@@ -12,7 +12,7 @@ export function AppHeader({ profile }: { profile: Profile }) {
     <header className="sticky top-0 z-20 bg-ancora text-white">
       <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-4">
         <Link href="/" aria-label="Início">
-          <Logo arte="reduzido" />
+          <Logo tom="claro" />
         </Link>
         <div className="flex items-center gap-3 sm:gap-[18px]">
           {profile.role === "admin" && (

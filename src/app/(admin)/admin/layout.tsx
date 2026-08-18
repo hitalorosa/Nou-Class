@@ -24,7 +24,7 @@ export default async function AdminLayout({
         <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-4">
           <div className="flex items-center gap-3">
             <Link href="/admin" aria-label="Painel">
-              <Logo arte="reduzido" />
+              <Logo tom="claro" />
             </Link>
             <span className="rounded-md bg-white px-2 py-1 text-[12px] font-bold uppercase tracking-[0.1em] text-roxo">
               Admin
