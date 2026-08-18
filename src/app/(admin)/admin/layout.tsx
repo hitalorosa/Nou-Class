@@ -17,27 +17,30 @@ export default async function AdminLayout({
 
   return (
     <div className="min-h-screen bg-painel">
-      <header className="border-b border-tinta/[0.06] bg-white">
+      {/* Mesma faixa âncora do app; text-white é o currentColor que o
+          LogoutButton e as abas herdam. As abas moram dentro da faixa rosa,
+          com sublinhado branco em vez do âncora que usavam no header claro. */}
+      <header className="bg-ancora text-white">
         <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-4">
           <div className="flex items-center gap-3">
             <Link href="/admin" aria-label="Painel">
-              <Logo />
+              <Logo arte="reduzido" />
             </Link>
-            <span className="rounded-md bg-tinta px-2 py-1 text-[12px] font-bold uppercase tracking-[0.1em] text-white">
+            <span className="rounded-md bg-white px-2 py-1 text-[12px] font-bold uppercase tracking-[0.1em] text-roxo">
               Admin
             </span>
           </div>
           <div className="flex items-center gap-3 sm:gap-[18px]">
             <Link
               href="/"
-              className="hidden text-[16px] font-bold text-grafite hover:text-ancora sm:inline"
+              className="hidden text-[16px] font-bold text-white/90 hover:text-white sm:inline"
             >
               Ver como aluna
             </Link>
             {primeiroNome && (
-              <span className="hidden text-[17px] text-grafite sm:inline">
+              <span className="hidden text-[17px] text-white/90 sm:inline">
                 Oi,{" "}
-                <strong className="font-semibold text-tinta">{primeiroNome}</strong>
+                <strong className="font-semibold text-white">{primeiroNome}</strong>
               </span>
             )}
             <LogoutButton />
@@ -63,7 +66,7 @@ function AdminTab({
   return (
     <Link
       href={href}
-      className="inline-flex min-h-[44px] items-center border-b-[3px] border-transparent text-[17px] font-bold text-grafite transition-colors hover:border-ancora hover:text-tinta"
+      className="inline-flex min-h-[44px] items-center border-b-[3px] border-transparent text-[17px] font-bold text-white/90 transition-colors hover:border-white hover:text-white"
     >
       {children}
     </Link>
