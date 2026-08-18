@@ -59,9 +59,9 @@ export function NavProgress() {
     <div
       role="status"
       aria-label="Carregando página"
-      className="fixed inset-x-0 top-0 z-50 h-1 bg-verde/15"
+      className="fixed inset-x-0 top-0 z-50 h-1 bg-ancora/15"
     >
-      <div className="h-full animate-nav-progress bg-verde" />
+      <div className="h-full animate-nav-progress bg-ancora" />
     </div>
   );
 }

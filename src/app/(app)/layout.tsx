@@ -19,7 +19,7 @@ export default async function AppLayout({
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-blush">
       <AppHeader profile={profile} />
       <main className="mx-auto max-w-5xl px-4 py-8">{children}</main>
     </div>

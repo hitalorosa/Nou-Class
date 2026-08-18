@@ -15,7 +15,7 @@ export default function CatalogoLoading() {
         {[0, 1, 2].map((i) => (
           <div
             key={i}
-            className="overflow-hidden rounded-xl2 border border-black/10"
+            className="overflow-hidden rounded-xl2 border border-tinta/10"
           >
             <Skeleton className="aspect-video w-full rounded-none" />
             <div className="space-y-3 p-5">

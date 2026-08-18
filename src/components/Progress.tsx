@@ -1,5 +1,9 @@
 import { cn } from "@/components/ui";
 
+/** Estrela de oito pontas do wordmark, reaproveitada como marca de conclusão. */
+const ESTRELA_CLIP =
+  "polygon(50% 0%,59% 41%,100% 50%,59% 59%,50% 100%,41% 59%,0% 50%,41% 41%)";
+
 /** Percentual inteiro de aulas assistidas. Curso sem aula é 0, nunca NaN. */
 export function percentual(done: number, total: number): number {
   if (total <= 0) return 0;
@@ -7,8 +11,9 @@ export function percentual(done: number, total: number): number {
 }
 
 /**
- * Barra fina de progresso. Usada no card do catálogo e no topo da lista de
- * aulas. Curso sem aula não renderiza nada — não há o que progredir.
+ * Barra fina de progresso. Curso terminado vira roxo — a mesma cor da estrela
+ * de conclusão, pra que "acabei" seja um estado visual próprio e não só uma
+ * barra cheia da mesma cor de quem está no meio.
  */
 export function ProgressBar({
   done,
@@ -21,6 +26,7 @@ export function ProgressBar({
 }) {
   if (total <= 0) return null;
   const pct = percentual(done, total);
+  const completo = done >= total;
 
   return (
     <div
@@ -30,20 +36,34 @@ export function ProgressBar({
       aria-valuemax={100}
       aria-label={`${done} de ${total} aulas assistidas`}
       className={cn(
-        "h-1.5 w-full overflow-hidden rounded-full bg-black/10",
+        "h-1.5 w-full overflow-hidden rounded-full bg-tinta/10",
         className,
       )}
     >
       <div
-        className="h-full rounded-full bg-verde transition-[width] duration-500 ease-out"
+        className={cn(
+          "h-full rounded-full transition-[width] duration-500 ease-out",
+          completo ? "bg-roxo" : "bg-ancora",
+        )}
         style={{ width: `${pct}%` }}
       />
     </div>
   );
 }
 
+/** Estrela sólida usada como marca de "concluído". */
+export function Estrela({ className }: { className?: string }) {
+  return (
+    <span
+      aria-hidden
+      className={cn("inline-block bg-current", className)}
+      style={{ clipPath: ESTRELA_CLIP }}
+    />
+  );
+}
+
 /**
- * Bloco "Meu progresso" com percentual, contagem e barra. Fica no topo da
+ * Bloco "Meu progresso" com percentual, barra e contagem. Fica no topo da
  * lista de aulas, dentro do curso.
  */
 export function ProgressSummary({
@@ -58,24 +78,22 @@ export function ProgressSummary({
   const completo = done >= total;
 
   return (
-    <div className="mb-4 rounded-xl2 border border-black/10 bg-white p-4">
-      <div className="mb-2 flex items-baseline justify-between gap-2">
-        <span className="text-sm font-bold text-tinta">
-          {completo ? "Curso concluído 🎉" : "Meu progresso"}
-        </span>
-        <span
-          className={cn(
-            "text-sm font-extrabold",
-            completo ? "text-verde-dark" : "text-verde",
-          )}
-        >
-          {pct}%
-        </span>
-      </div>
+    <div className="mb-4 flex flex-col gap-2.5 rounded-xl2 border border-tinta/5 bg-white p-5 shadow-[0_2px_10px_rgba(26,26,26,.05)]">
+      <span className="font-display text-[14px] font-bold uppercase tracking-[0.06em] text-grafite">
+        {completo ? "Curso concluído" : "Meu progresso"}
+      </span>
+      <span
+        className={cn(
+          "font-display text-[41px] font-extrabold leading-none",
+          completo ? "text-roxo" : "text-ancora",
+        )}
+      >
+        {pct}%
+      </span>
       <ProgressBar done={done} total={total} />
-      <p className="mt-2 text-xs font-semibold text-black/50">
+      <span className="text-[16px] text-grafite">
         {done} de {total} {total === 1 ? "aula" : "aulas"}
-      </p>
+      </span>
     </div>
   );
 }

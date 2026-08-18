@@ -36,14 +36,14 @@ export default function LoginPage() {
   return (
     <div className="space-y-6">
       <div className="space-y-1 text-center">
-        <h1 className="text-2xl font-bold text-tinta">Bem-vinda de volta 💚</h1>
-        <p className="text-black/60">Entre para continuar seus cursos.</p>
+        <h1 className="font-display text-[30px] font-extrabold leading-tight text-tinta sm:text-[34px]">Bom te ver aqui</h1>
+        <p className="text-grafite">Entre para continuar seus cursos</p>
       </div>
 
       <GoogleButton />
 
-      <div className="flex items-center gap-3 text-sm text-black/40">
-        <span className="h-px flex-1 bg-black/10" /> ou <span className="h-px flex-1 bg-black/10" />
+      <div className="flex items-center gap-3 text-[15px] text-grafite">
+        <span className="h-px flex-1 bg-tinta/10" /> ou <span className="h-px flex-1 bg-tinta/10" />
       </div>
 
       <form onSubmit={entrar} className="space-y-4">
@@ -73,7 +73,7 @@ export default function LoginPage() {
         <div className="text-right">
           <Link
             href="/esqueci-senha"
-            className="text-sm font-semibold text-verde hover:underline"
+            className="text-[17px] font-semibold text-ancora underline underline-offset-2 hover:text-ancora-dark"
           >
             Esqueci minha senha
           </Link>
@@ -89,9 +89,9 @@ export default function LoginPage() {
         </Button>
       </form>
 
-      <p className="text-center text-sm text-black/60">
+      <p className="text-center text-[17px] text-grafite">
         Ainda não tem conta?{" "}
-        <Link href="/cadastro" className="font-semibold text-verde hover:underline">
+        <Link href="/cadastro" className="font-semibold text-ancora underline underline-offset-2 hover:text-ancora-dark">
           Criar conta
         </Link>
       </p>

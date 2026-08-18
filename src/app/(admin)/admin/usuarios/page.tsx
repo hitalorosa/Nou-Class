@@ -22,32 +22,32 @@ export default async function AdminUsuariosPage() {
 
   return (
     <div>
-      <h1 className="mb-1 text-2xl font-bold text-tinta">Usuárias</h1>
-      <p className="mb-6 text-black/60">
+      <h1 className="mb-1 font-display text-[30px] font-extrabold text-tinta">Usuárias</h1>
+      <p className="mb-6 text-[17px] text-grafite">
         Libere o acesso de quem se cadastrou. Quem está liberado vê todos os
         cursos publicados.
       </p>
 
-      <div className="overflow-hidden rounded-xl2 border border-black/10 bg-white">
+      <div className="overflow-hidden rounded-xl2 border border-tinta/10 bg-white">
         <table className="w-full text-left text-sm">
-          <thead className="border-b border-black/10 bg-black/[0.02] text-xs uppercase tracking-wide text-black/50">
+          <thead className="border-b border-tinta/10 bg-painel font-display text-[13px] uppercase tracking-[0.08em] text-grafite">
             <tr>
               <th className="px-4 py-3">Pessoa</th>
               <th className="px-4 py-3">Status</th>
               <th className="px-4 py-3 text-right">Ações</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-black/5">
+          <tbody className="divide-y divide-tinta/5">
             {users.map((u) => {
               const isSelf = u.id === me?.id;
               const isAdmin = u.role === "admin";
               return (
                 <tr key={u.id} className="align-middle">
                   <td className="px-4 py-3">
-                    <div className="font-semibold text-tinta">
+                    <div className="font-display font-bold text-tinta">
                       {u.full_name || "—"}
                     </div>
-                    <div className="text-black/50">{u.email}</div>
+                    <div className="text-grafite">{u.email}</div>
                   </td>
                   <td className="px-4 py-3">
                     <StatusBadge profile={u} />
@@ -57,7 +57,7 @@ export default async function AdminUsuariosPage() {
                       {!isAdmin && !u.access_granted && (
                         <form action={grantAccessAction}>
                           <input type="hidden" name="userId" value={u.id} />
-                          <PendingButton className="inline-flex items-center justify-center gap-2 rounded-xl bg-verde px-4 py-2 text-sm font-bold text-white transition-colors hover:bg-verde-dark disabled:opacity-60">
+                          <PendingButton className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-[13px] bg-ancora px-5 font-display text-[16px] font-bold text-white transition-colors hover:bg-ancora-dark disabled:opacity-60">
                             Liberar
                           </PendingButton>
                         </form>
@@ -65,7 +65,7 @@ export default async function AdminUsuariosPage() {
                       {!isAdmin && u.access_granted && (
                         <form action={revokeAccessAction}>
                           <input type="hidden" name="userId" value={u.id} />
-                          <PendingButton className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-black/15 px-4 py-2 text-sm font-bold text-tinta hover:border-ambar hover:text-ambar disabled:opacity-60">
+                          <PendingButton className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-[13px] border-2 border-tinta/[0.12] px-4 font-display text-[16px] font-bold text-tinta hover:border-tinta hover:bg-tinta hover:text-white disabled:opacity-60">
                             Revogar
                           </PendingButton>
                         </form>
@@ -88,7 +88,7 @@ export default async function AdminUsuariosPage() {
           </tbody>
         </table>
         {users.length === 0 && (
-          <p className="px-4 py-10 text-center text-black/50">
+          <p className="px-4 py-10 text-center text-grafite">
             Ninguém cadastrado ainda.
           </p>
         )}
@@ -98,23 +98,24 @@ export default async function AdminUsuariosPage() {
 }
 
 function StatusBadge({ profile }: { profile: Profile }) {
+  // Cada estado tem ícone + palavra: quem não distingue as cores continua
+  // conseguindo separar aguardando de liberada.
+  const base =
+    "inline-flex items-center gap-2 rounded-full px-3 py-1.5 font-display text-[15px] font-bold";
+
   if (profile.role === "admin") {
-    return (
-      <span className="rounded-full bg-tinta px-2.5 py-1 text-xs font-bold text-white">
-        Admin
-      </span>
-    );
+    return <span className={`${base} bg-tinta text-white`}>★ Admin</span>;
   }
   if (profile.access_granted) {
     return (
-      <span className="rounded-full bg-verde-light px-2.5 py-1 text-xs font-bold text-verde-dark">
-        Liberada
+      <span className={`${base} border border-ancora-line bg-ancora-light text-ancora-dark`}>
+        ✓ Liberada
       </span>
     );
   }
   return (
-    <span className="rounded-full bg-ambar/20 px-2.5 py-1 text-xs font-bold text-ambar">
-      Aguardando
+    <span className={`${base} border border-ambar bg-ambar-bg text-ambar-ink`}>
+      ⏳ Aguardando
     </span>
   );
 }

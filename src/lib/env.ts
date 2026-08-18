@@ -10,7 +10,7 @@ export function required(value: string | undefined, name: string): string {
   if (value) return value;
 
   throw new Error(
-    `[Nouê Class] Variável de ambiente ausente: ${name}.\n` +
+    `[Nouê Estrelas] Variável de ambiente ausente: ${name}.\n` +
       `Cadastre em Vercel → Settings → Environment Variables e faça um NOVO DEPLOY. ` +
       `As variáveis NEXT_PUBLIC_* são gravadas durante o build, então só salvar não muda o site no ar.`,
   );

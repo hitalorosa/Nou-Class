@@ -50,7 +50,7 @@ export default async function AdminCursoEditPage({
     <div className="space-y-8">
       <Link
         href="/admin/cursos"
-        className="inline-flex items-center gap-1 text-sm font-semibold text-black/60 hover:text-verde"
+        className="inline-flex min-h-[44px] items-center gap-2 font-display text-[17px] font-bold text-ancora hover:text-ancora-dark"
       >
         <ChevronLeft size={16} /> Voltar aos cursos
       </Link>
@@ -69,10 +69,10 @@ export default async function AdminCursoEditPage({
       {/* Editar dados do curso */}
       <form
         action={updateCourseAction}
-        className="space-y-4 rounded-xl2 border border-black/10 bg-white p-6"
+        className="space-y-4 rounded-xl2 border border-tinta/10 bg-white p-6"
       >
         <input type="hidden" name="id" value={course.id} />
-        <h2 className="text-lg font-bold text-tinta">Dados do curso</h2>
+        <h2 className="font-display text-[19px] font-bold text-tinta">Dados do curso</h2>
         <Field label="Título">
           <Input name="title" required defaultValue={course.title} />
         </Field>
@@ -94,11 +94,11 @@ export default async function AdminCursoEditPage({
       {/* Nova aula */}
       <AutoResetForm
         action={createLessonAction}
-        className="space-y-4 rounded-xl2 border border-black/10 bg-white p-6"
+        className="space-y-4 rounded-xl2 border border-tinta/10 bg-white p-6"
       >
         <input type="hidden" name="courseId" value={course.id} />
-        <h2 className="flex items-center gap-2 text-lg font-bold text-tinta">
-          <Plus size={18} className="text-verde" /> Nova aula
+        <h2 className="flex items-center gap-2 font-display text-[19px] font-bold text-tinta">
+          <Plus size={18} className="text-ancora" /> Nova aula
         </h2>
         <Field label="Título da aula">
           <Input name="title" required placeholder="Ex: Aula 1 — Definindo seu nicho" />
@@ -119,11 +119,11 @@ export default async function AdminCursoEditPage({
 
       {/* Lista de aulas */}
       <div>
-        <h2 className="mb-3 text-lg font-bold text-tinta">
+        <h2 className="mb-3 font-display text-[21px] font-bold text-tinta">
           Aulas ({lessons.length})
         </h2>
-        <div className="overflow-hidden rounded-xl2 border border-black/10 bg-white">
-          <ul className="divide-y divide-black/5">
+        <div className="overflow-hidden rounded-xl2 border border-tinta/10 bg-white">
+          <ul className="divide-y divide-tinta/5">
             {lessons.map((l, i) => (
               <li key={l.id} className="px-4 py-3">
                 <div className="flex items-center gap-3">
@@ -147,20 +147,20 @@ export default async function AdminCursoEditPage({
                   </div>
 
                   <div className="min-w-0 flex-1">
-                    <div className="truncate font-semibold text-tinta">
+                    <div className="truncate font-display font-bold text-tinta">
                       {l.title}
                     </div>
                     <div className="flex items-center gap-2 text-xs">
                       {!l.youtube_id ? (
-                        <span className="font-bold text-ambar">
+                        <span className="font-display font-bold text-ambar-ink">
                           ⏸ Standby (sem vídeo)
                         </span>
                       ) : l.is_published ? (
-                        <span className="font-bold text-verde-dark">
+                        <span className="font-display font-bold text-ancora-dark">
                           ● Publicada
                         </span>
                       ) : (
-                        <span className="font-bold text-black/40">
+                        <span className="font-display font-bold text-grafite">
                           ○ Rascunho
                         </span>
                       )}
@@ -177,7 +177,7 @@ export default async function AdminCursoEditPage({
                         name="publish"
                         value={l.is_published ? "0" : "1"}
                       />
-                      <PendingButton className="rounded-lg border-2 border-black/15 px-3 py-1.5 text-xs font-bold text-tinta hover:border-verde hover:text-verde disabled:opacity-60">
+                      <PendingButton className="min-h-[44px] rounded-[13px] border-2 border-tinta/[0.12] px-4 font-display text-[16px] font-bold text-tinta hover:border-ancora hover:text-ancora disabled:opacity-60">
                         {l.is_published ? "Despublicar" : "Publicar"}
                       </PendingButton>
                     </form>
@@ -194,12 +194,12 @@ export default async function AdminCursoEditPage({
 
                 {/* editar aula (expansível) */}
                 <details className="mt-2">
-                  <summary className="cursor-pointer select-none text-sm font-semibold text-verde">
+                  <summary className="inline-flex min-h-[44px] cursor-pointer select-none items-center font-display text-[16px] font-bold text-ancora hover:text-ancora-dark">
                     Editar aula
                   </summary>
                   <form
                     action={updateLessonAction}
-                    className="mt-3 space-y-3 rounded-xl bg-black/[0.02] p-4"
+                    className="mt-3 space-y-3 rounded-[13px] bg-painel p-4"
                   >
                     <input type="hidden" name="id" value={l.id} />
                     <input type="hidden" name="courseId" value={course.id} />
@@ -237,7 +237,7 @@ export default async function AdminCursoEditPage({
             ))}
           </ul>
           {lessons.length === 0 && (
-            <p className="px-4 py-10 text-center text-black/50">
+            <p className="px-4 py-10 text-center text-grafite">
               Nenhuma aula ainda. Adicione a primeira acima 👆
             </p>
           )}
@@ -268,7 +268,7 @@ function MoveLesson({
       <PendingButton
         disabled={disabled}
         title={dir === "up" ? "Subir" : "Descer"}
-        className="text-black/40 hover:text-verde disabled:opacity-20"
+        className="p-1 text-traco hover:text-ancora disabled:opacity-20"
       >
         {children}
       </PendingButton>

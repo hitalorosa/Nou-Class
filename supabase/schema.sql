@@ -1,5 +1,5 @@
 -- ============================================================================
--- Nouê Class — schema do banco (Postgres / Supabase)
+-- Nouê Estrelas — schema do banco (Postgres / Supabase)
 -- Rode este arquivo INTEIRO no Supabase → SQL Editor (uma vez).
 -- Ele é idempotente o suficiente pra rodar de novo em dev sem quebrar.
 -- ============================================================================

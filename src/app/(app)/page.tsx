@@ -1,6 +1,7 @@
-import { createClient } from "@/lib/supabase/server";
-import { CourseCard, type CourseCardData } from "@/components/CourseCard";
 import Image from "next/image";
+import { createClient } from "@/lib/supabase/server";
+import { getCurrentProfile } from "@/lib/auth";
+import { CourseCard, type CourseCardData } from "@/components/CourseCard";
 
 // Imagem do hero: sobe pro bucket `covers` do Supabase e cola a URL pública
 // em NEXT_PUBLIC_HERO_IMAGE_URL. Sem a variável, o hero cai num gradiente.
@@ -34,17 +35,16 @@ export default async function CatalogoPage() {
   const totalPorCurso = new Map<string, number>();
   const assistidasPorCurso = new Map<string, number>();
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const profile = await getCurrentProfile();
+  const primeiroNome = profile?.full_name?.split(" ")[0];
 
-  if (user) {
+  if (profile) {
     const [{ data: aulas }, { data: progresso }] = await Promise.all([
       supabase.from("lessons").select("id, course_id").eq("is_published", true),
       supabase
         .from("lesson_progress")
         .select("lesson_id")
-        .eq("user_id", user.id),
+        .eq("user_id", profile.id),
     ]);
 
     const assistidas = new Set((progresso ?? []).map((p) => p.lesson_id));
@@ -74,24 +74,23 @@ export default async function CatalogoPage() {
   return (
     <div>
       {/* Hero */}
-      <div className="relative mb-10 overflow-hidden rounded-xl2 bg-white shadow-sm ring-1 ring-black/5">
+      <div className="mb-10 overflow-hidden rounded-xl2 border border-tinta/5 bg-white shadow-[0_2px_10px_rgba(26,26,26,.05)]">
         <div className="grid grid-cols-1 md:grid-cols-2">
-          <div className="relative order-2 flex flex-col justify-center p-8 md:order-1 md:p-12">
-            <p className="text-xs font-semibold uppercase tracking-widest text-verde">
-              Nouê Class
+          <div className="order-2 flex flex-col justify-center gap-4 p-8 md:order-1 md:p-12">
+            <p className="font-display text-[13px] font-bold uppercase tracking-[0.14em] text-ancora">
+              Seus cursos liberados
             </p>
-            <h1 className="mt-3 text-4xl font-bold leading-tight text-tinta md:text-5xl">
-              A escola da Nouê pra cabeleireira.
+            <h1 className="font-display text-[34px] font-extrabold leading-[1.05] tracking-tight text-tinta md:text-[51px] md:leading-[1.03]">
+              {primeiroNome ? `Oi, ${primeiroNome}.` : "Bem-vinda."}
+              <br />
+              Continue de onde parou.
             </h1>
-            <p className="mt-4 max-w-md text-lg text-black/70">
-              Aprenda a se posicionar na internet, criar conteúdo e crescer
-              como profissional. Aulas curtas, prática e Nouê do começo ao fim.
+            <p className="max-w-[42ch] text-[17px] leading-relaxed text-grafite md:text-[19px]">
+              Cada aula fica marcada quando você termina. Dá pra parar no meio de
+              uma e voltar depois — a plataforma lembra por você.
             </p>
           </div>
-          {/* Quadro na proporção da foto (~1:1), não o contrário.
-              Antes era 4:3 no celular e ~1,39:1 no desktop, o que cortava
-              cerca de 30% da altura de uma imagem quase quadrada — e o que
-              saía era justamente a cliente, na base do enquadramento. */}
+          {/* Quadro na proporção da foto (~1:1), não o contrário. */}
           <div className="relative order-1 aspect-square md:order-2 md:aspect-auto md:min-h-[500px]">
             {HERO_URL ? (
               <Image
@@ -103,26 +102,23 @@ export default async function CatalogoPage() {
                 className="object-cover"
               />
             ) : (
-              <div className="h-full w-full bg-gradient-to-br from-verde to-verde-dark" />
+              <div className="h-full w-full bg-gradient-to-br from-rosa to-ancora-dark" />
             )}
           </div>
         </div>
       </div>
 
-      <div className="mb-8">
-        <h2 className="text-2xl font-bold text-tinta">Seus cursos</h2>
-        <p className="mt-1 text-black/60">
-          Escolha um curso para começar a assistir.
-        </p>
-      </div>
+      <h2 className="mb-6 font-display text-[23px] font-bold text-tinta md:text-[30px]">
+        Cursos
+      </h2>
 
       {courses.length === 0 ? (
-        <div className="rounded-xl2 border border-dashed border-black/15 bg-black/[0.02] px-6 py-16 text-center">
-          <div className="text-5xl">📚</div>
-          <p className="mt-4 text-lg font-semibold text-tinta">
+        <div className="rounded-xl2 border border-dashed border-tinta/15 bg-white/60 px-6 py-16 text-center">
+          <div className="text-5xl">✦</div>
+          <p className="mt-4 font-display text-[19px] font-bold text-tinta">
             Os cursos estão chegando!
           </p>
-          <p className="mt-1 text-black/60">
+          <p className="mt-1 text-grafite">
             Ainda não há cursos publicados. Volte em breve.
           </p>
         </div>

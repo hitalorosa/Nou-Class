@@ -9,18 +9,33 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Identidade Nouê (extraída do tema real da loja)
-        verde: {
-          DEFAULT: "#00A341", // cor-âncora: CTA, preços, ofertas
-          dark: "#008A37", // hover
-          light: "#E0F4E8", // fundo de sucesso/destaque suave
+        // Identidade Nouê Estrelas.
+        // Os nomes são o PAPEL da cor, não a cor em si — foi trocar o verde
+        // por rosa uma vez pra ficar claro que "verde-dark" envelhece mal.
+        ancora: {
+          DEFAULT: "#C21B6D", // botão principal, links, progresso, rótulo do hero
+          dark: "#8E1049", // hover e texto da âncora sobre fundo claro
+          light: "#FDEAF1", // aula atual, sucesso, fundo das telas de acesso
+          line: "#F6C9DB", // borda de etiqueta sobre âncora-clara
         },
-        tinta: "#1A1A1A", // títulos / texto principal (quase-preto)
-        ambar: "#FFB74A", // estrelas / avaliação (uso pontual)
-        erro: "#F83A3A",
+        rosa: "#FE64A3", // Beijo de Rosa: marca e áreas grandes, nunca texto pequeno
+        roxo: "#643A71", // etiqueta Admin, botão Painel, capa sem imagem, conclusão
+        tinta: "#1A1A1A", // títulos e corpo
+        grafite: "#5C4F55", // cinza de apoio — 7,3:1 sobre branco
+        fantasma: "#8C8189", // placeholder de campo
+        traco: "#B5A8AF", // círculo tracejado de aula não assistida
+        ambar: {
+          DEFAULT: "#FFB74A", // aguardando, standby, pendência
+          bg: "#FFF3E0",
+          ink: "#7A4E00",
+        },
+        erro: "#C4271C",
+        blush: "#FDF4F7", // fundo das telas de dentro (substitui o branco)
+        painel: "#F7F3F5", // fundo do admin
       },
       fontFamily: {
-        sans: ["Satoshi", "ui-sans-serif", "system-ui", "sans-serif"],
+        sans: ["var(--fonte-corpo)", "ui-sans-serif", "system-ui", "sans-serif"],
+        display: ["var(--fonte-titulo)", "ui-sans-serif", "system-ui", "sans-serif"],
       },
       borderRadius: {
         xl2: "1.25rem",

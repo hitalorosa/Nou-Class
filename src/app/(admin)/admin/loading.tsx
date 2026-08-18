@@ -11,7 +11,7 @@ export default function AdminLoading() {
       <Skeleton className="h-8 w-44" />
       <Skeleton className="h-5 w-96 max-w-full" />
 
-      <div className="overflow-hidden rounded-xl2 border border-black/10">
+      <div className="overflow-hidden rounded-xl2 border border-tinta/10">
         {[0, 1, 2, 3].map((i) => (
           <div key={i} className="flex items-center gap-3 px-4 py-4">
             <Skeleton className="h-10 w-10 shrink-0 rounded-xl" />

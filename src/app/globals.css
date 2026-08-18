@@ -3,12 +3,14 @@
 @tailwind utilities;
 
 :root {
-  --noue-verde: #00a341;
-  --noue-verde-dark: #008a37;
+  --noue-ancora: #c21b6d;
+  --noue-ancora-dark: #8e1049;
+  --noue-ancora-light: #fdeaf1;
+  --noue-rosa: #fe64a3;
+  --noue-roxo: #643a71;
   --noue-tinta: #1a1a1a;
   --noue-ambar: #ffb74a;
-  --noue-erro: #f83a3a;
-  --noue-sucesso-bg: #e0f4e8;
+  --noue-erro: #c4271c;
 }
 
 /* Base um pouco maior: público 40+ agradece a leitura confortável */
@@ -18,10 +20,14 @@ html {
 
 body {
   color: var(--noue-tinta);
-  background: #ffffff;
-  font-family: "Satoshi", ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--fonte-corpo), ui-sans-serif, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+/* Títulos, rótulos e botões usam a Archivo. */
+h1, h2, h3, h4, .fonte-titulo {
+  font-family: var(--fonte-titulo), ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer utilities {

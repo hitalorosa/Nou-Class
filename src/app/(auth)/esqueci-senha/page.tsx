@@ -26,8 +26,8 @@ export default function EsqueciSenhaPage() {
     return (
       <div className="space-y-5 text-center">
         <div className="text-5xl">📬</div>
-        <h1 className="text-2xl font-bold text-tinta">Confira seu email</h1>
-        <p className="text-black/60">
+        <h1 className="font-display text-[30px] font-extrabold leading-tight text-tinta sm:text-[34px]">Confira seu email</h1>
+        <p className="text-grafite">
           Se existir uma conta com <strong>{email}</strong>, enviamos um link
           para você criar uma senha nova. Pode demorar alguns minutinhos.
         </p>
@@ -36,7 +36,7 @@ export default function EsqueciSenhaPage() {
         </Alert>
         <Link
           href="/login"
-          className="inline-block font-semibold text-verde hover:underline"
+          className="inline-block font-semibold text-ancora underline underline-offset-2 hover:text-ancora-dark"
         >
           Voltar para o login
         </Link>
@@ -47,8 +47,8 @@ export default function EsqueciSenhaPage() {
   return (
     <div className="space-y-6">
       <div className="space-y-1 text-center">
-        <h1 className="text-2xl font-bold text-tinta">Esqueceu a senha?</h1>
-        <p className="text-black/60">
+        <h1 className="font-display text-[30px] font-extrabold leading-tight text-tinta sm:text-[34px]">Esqueceu a senha?</h1>
+        <p className="text-grafite">
           Sem problema. Digite seu email que a gente te manda um link.
         </p>
       </div>
@@ -76,9 +76,9 @@ export default function EsqueciSenhaPage() {
         </Button>
       </form>
 
-      <p className="text-center text-sm text-black/60">
+      <p className="text-center text-[17px] text-grafite">
         Lembrou a senha?{" "}
-        <Link href="/login" className="font-semibold text-verde hover:underline">
+        <Link href="/login" className="font-semibold text-ancora underline underline-offset-2 hover:text-ancora-dark">
           Entrar
         </Link>
       </p>

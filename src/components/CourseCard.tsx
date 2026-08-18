@@ -1,6 +1,5 @@
 import Link from "next/link";
-import { PlayCircle, CheckCircle2 } from "lucide-react";
-import { ProgressBar, percentual } from "@/components/Progress";
+import { ProgressBar, percentual, Estrela } from "@/components/Progress";
 
 export type CourseCardData = {
   id: string;
@@ -18,9 +17,9 @@ export function CourseCard({ course }: { course: CourseCardData }) {
   return (
     <Link
       href={`/curso/${course.id}`}
-      className="group flex flex-col overflow-hidden rounded-xl2 border border-black/10 bg-white transition-shadow hover:shadow-md"
+      className="group flex flex-col overflow-hidden rounded-xl2 border border-tinta/10 bg-white transition-shadow hover:shadow-[0_8px_24px_rgba(26,26,26,.12)]"
     >
-      <div className="relative aspect-video w-full overflow-hidden bg-verde-light">
+      <div className="relative aspect-video w-full overflow-hidden bg-ancora-light">
         {course.cover_url ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -29,42 +28,48 @@ export function CourseCard({ course }: { course: CourseCardData }) {
             className="h-full w-full object-cover transition-transform group-hover:scale-105"
           />
         ) : (
-          <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-verde to-verde-dark">
-            <span className="px-4 text-center text-xl font-extrabold text-white/90">
+          // Sem capa: o título vira a capa sobre o gradiente roxo→âncora-escura.
+          <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-roxo to-ancora-dark p-5">
+            <span className="text-center font-display text-[23px] font-extrabold leading-tight text-white">
               {course.title}
             </span>
           </div>
         )}
       </div>
-      <div className="flex flex-1 flex-col p-5">
-        <h3 className="text-lg font-bold text-tinta">{course.title}</h3>
+
+      <div className="flex flex-1 flex-col gap-3 p-5">
+        <h3 className="font-display text-[19px] font-bold leading-tight text-tinta">
+          {course.title}
+        </h3>
         {course.description && (
-          <p className="mt-1.5 line-clamp-2 text-sm text-black/60">
+          <p className="line-clamp-2 text-[16px] leading-normal text-grafite">
             {course.description}
           </p>
         )}
-        <div className="mt-auto pt-4">
+
+        <div className="mt-auto pt-1">
           {course.lessonCount === 0 ? (
-            <span className="text-sm font-semibold text-black/40">
+            <span className="flex items-center gap-2 text-[16px] text-grafite">
+              <span className="h-5 w-5 rounded-full border-2 border-dashed border-traco" />
               Aulas em breve
             </span>
           ) : (
-            <>
-              <div className="mb-2 flex items-center justify-between gap-2">
-                <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-verde">
-                  {concluido ? (
-                    <>
-                      <CheckCircle2 size={16} /> Concluído
-                    </>
-                  ) : (
-                    <>
-                      <PlayCircle size={16} />
-                      {course.watchedCount} de {course.lessonCount}{" "}
-                      {course.lessonCount === 1 ? "aula" : "aulas"}
-                    </>
-                  )}
-                </span>
-                <span className="text-xs font-bold text-black/40">
+            <div className="flex flex-col gap-2.5">
+              <div className="flex items-center justify-between gap-3">
+                {concluido ? (
+                  <span className="flex items-center gap-2 font-display text-[16px] font-bold text-roxo">
+                    <Estrela className="h-5 w-5" /> Concluído
+                  </span>
+                ) : (
+                  <span className="flex items-center gap-2 font-display text-[16px] font-bold text-ancora">
+                    <span className="flex h-5 w-5 items-center justify-center rounded-full bg-ancora text-[9px] text-white">
+                      ▶
+                    </span>
+                    {course.watchedCount} de {course.lessonCount}{" "}
+                    {course.lessonCount === 1 ? "aula" : "aulas"}
+                  </span>
+                )}
+                <span className="text-[15px] text-grafite">
                   {percentual(course.watchedCount, course.lessonCount)}%
                 </span>
               </div>
@@ -72,7 +77,7 @@ export function CourseCard({ course }: { course: CourseCardData }) {
                 done={course.watchedCount}
                 total={course.lessonCount}
               />
-            </>
+            </div>
           )}
         </div>
       </div>

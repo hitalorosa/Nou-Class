@@ -31,8 +31,8 @@ export default async function AdminCursosPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="mb-1 text-2xl font-bold text-tinta">Cursos</h1>
-        <p className="text-black/60">
+        <h1 className="mb-1 font-display text-[30px] font-extrabold text-tinta">Cursos</h1>
+        <p className="text-[17px] text-grafite">
           Crie cursos e organize as aulas. Só cursos publicados aparecem para as
           alunas.
         </p>
@@ -41,10 +41,10 @@ export default async function AdminCursosPage() {
       {/* Criar curso */}
       <AutoResetForm
         action={createCourseAction}
-        className="space-y-4 rounded-xl2 border border-black/10 bg-white p-6"
+        className="space-y-4 rounded-xl2 border border-tinta/10 bg-white p-6"
       >
-        <h2 className="flex items-center gap-2 text-lg font-bold text-tinta">
-          <Plus size={18} className="text-verde" /> Novo curso
+        <h2 className="flex items-center gap-2 font-display text-[19px] font-bold text-tinta">
+          <Plus size={18} className="text-ancora" /> Novo curso
         </h2>
         <Field label="Título do curso">
           <Input name="title" required placeholder="Ex: Como se posicionar no Instagram" />
@@ -61,8 +61,8 @@ export default async function AdminCursosPage() {
       </AutoResetForm>
 
       {/* Lista */}
-      <div className="overflow-hidden rounded-xl2 border border-black/10 bg-white">
-        <ul className="divide-y divide-black/5">
+      <div className="overflow-hidden rounded-xl2 border border-tinta/10 bg-white">
+        <ul className="divide-y divide-tinta/5">
           {courses.map((c, i) => (
             <li key={c.id} className="flex items-center gap-3 px-4 py-3">
               <div className="flex flex-col">
@@ -79,19 +79,19 @@ export default async function AdminCursosPage() {
               </div>
 
               <div className="min-w-0 flex-1">
-                <div className="truncate font-semibold text-tinta">{c.title}</div>
-                <div className="text-sm text-black/50">
+                <div className="truncate font-display font-bold text-tinta">{c.title}</div>
+                <div className="text-[15px] text-grafite">
                   {c.lessons?.[0]?.count ?? 0} aula(s)
                 </div>
               </div>
 
               {c.is_published ? (
-                <span className="rounded-full bg-verde-light px-2.5 py-1 text-xs font-bold text-verde-dark">
-                  Publicado
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-ancora-line bg-ancora-light px-3 py-1.5 font-display text-[15px] font-bold text-ancora-dark">
+                  ✓ Publicado
                 </span>
               ) : (
-                <span className="rounded-full bg-black/10 px-2.5 py-1 text-xs font-bold text-black/50">
-                  Rascunho
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-tinta/10 bg-painel px-3 py-1.5 font-display text-[15px] font-bold text-grafite">
+                  ○ Rascunho
                 </span>
               )}
 
@@ -102,14 +102,14 @@ export default async function AdminCursosPage() {
                   name="publish"
                   value={c.is_published ? "0" : "1"}
                 />
-                <PendingButton className="rounded-lg border-2 border-black/15 px-3 py-1.5 text-sm font-bold text-tinta hover:border-verde hover:text-verde disabled:opacity-60">
+                <PendingButton className="min-h-[44px] rounded-[13px] border-2 border-tinta/[0.12] px-4 font-display text-[16px] font-bold text-tinta hover:border-ancora hover:text-ancora disabled:opacity-60">
                   {c.is_published ? "Despublicar" : "Publicar"}
                 </PendingButton>
               </form>
 
               <Link
                 href={`/admin/cursos/${c.id}`}
-                className="inline-flex items-center gap-1.5 rounded-lg bg-tinta px-3 py-1.5 text-sm font-bold text-white hover:bg-black"
+                className="inline-flex min-h-[44px] items-center gap-1.5 rounded-[13px] bg-roxo px-4 font-display text-[16px] font-bold text-white transition-opacity hover:opacity-90"
               >
                 <Pencil size={14} /> Editar
               </Link>
@@ -126,7 +126,7 @@ export default async function AdminCursosPage() {
           ))}
         </ul>
         {courses.length === 0 && (
-          <p className="px-4 py-10 text-center text-black/50">
+          <p className="px-4 py-10 text-center text-grafite">
             Nenhum curso ainda. Crie o primeiro acima 👆
           </p>
         )}
@@ -153,7 +153,7 @@ function MoveButton({
       <PendingButton
         disabled={disabled}
         title={dir === "up" ? "Subir" : "Descer"}
-        className="text-black/40 hover:text-verde disabled:opacity-20"
+        className="p-1 text-traco hover:text-ancora disabled:opacity-20"
       >
         {children}
       </PendingButton>

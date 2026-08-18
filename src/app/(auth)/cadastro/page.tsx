@@ -58,18 +58,18 @@ export default function CadastroPage() {
     return (
       <div className="space-y-5 text-center">
         <div className="text-5xl">📩</div>
-        <h1 className="text-2xl font-bold text-tinta">Confirme seu email</h1>
+        <h1 className="font-display text-[30px] font-extrabold leading-tight text-tinta sm:text-[34px]">Confirme seu email</h1>
         <Alert kind="success">
           Enviamos um link para <strong>{email.trim()}</strong>. Abra o email e
           clique no link para ativar sua conta.
         </Alert>
-        <p className="text-sm text-black/60">
+        <p className="text-[17px] text-grafite">
           Não chegou? Espere um minutinho e olhe na caixa de <strong>spam</strong> ou
           lixo eletrônico — é onde costuma cair.
         </p>
         <Link
           href="/login"
-          className="inline-block font-semibold text-verde hover:underline"
+          className="inline-block font-semibold text-ancora underline underline-offset-2 hover:text-ancora-dark"
         >
           Voltar para o login
         </Link>
@@ -80,14 +80,14 @@ export default function CadastroPage() {
   return (
     <div className="space-y-6">
       <div className="space-y-1 text-center">
-        <h1 className="text-2xl font-bold text-tinta">Criar minha conta</h1>
-        <p className="text-black/60">É rapidinho. Leva menos de 1 minuto.</p>
+        <h1 className="font-display text-[30px] font-extrabold leading-tight text-tinta sm:text-[34px]">Criar minha conta</h1>
+        <p className="text-grafite">É rapidinho. Leva menos de 1 minuto.</p>
       </div>
 
       <GoogleButton label="Cadastrar com o Google" />
 
-      <div className="flex items-center gap-3 text-sm text-black/40">
-        <span className="h-px flex-1 bg-black/10" /> ou <span className="h-px flex-1 bg-black/10" />
+      <div className="flex items-center gap-3 text-[15px] text-grafite">
+        <span className="h-px flex-1 bg-tinta/10" /> ou <span className="h-px flex-1 bg-tinta/10" />
       </div>
 
       <form onSubmit={cadastrar} className="space-y-4">
@@ -136,9 +136,9 @@ export default function CadastroPage() {
         </Button>
       </form>
 
-      <p className="text-center text-sm text-black/60">
+      <p className="text-center text-[17px] text-grafite">
         Já tem conta?{" "}
-        <Link href="/login" className="font-semibold text-verde hover:underline">
+        <Link href="/login" className="font-semibold text-ancora underline underline-offset-2 hover:text-ancora-dark">
           Entrar
         </Link>
       </p>

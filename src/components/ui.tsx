@@ -19,13 +19,14 @@ export function Button({
   className,
   ...props
 }: ButtonProps) {
+  // min-h-[52px]: o alvo de toque do design, com folga sobre os 44px mínimos.
   const base =
-    "inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-base font-bold transition-colors disabled:cursor-not-allowed disabled:opacity-60 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-verde";
+    "inline-flex min-h-[52px] items-center justify-center gap-3 rounded-[13px] px-6 font-display text-[17px] font-bold transition-colors disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ancora-light focus-visible:ring-offset-0";
   const variants: Record<string, string> = {
-    primary: "bg-verde text-white hover:bg-verde-dark",
+    primary: "bg-ancora text-white hover:bg-ancora-dark",
     secondary:
       "border-2 border-tinta bg-white text-tinta hover:bg-tinta hover:text-white",
-    ghost: "text-tinta hover:bg-black/5",
+    ghost: "text-tinta hover:bg-tinta/5",
     danger: "bg-erro text-white hover:brightness-90",
   };
   return (
@@ -39,19 +40,15 @@ export function Button({
 // ---------------------------------------------------------------------------
 // Input / Textarea / Field
 // ---------------------------------------------------------------------------
+const campo =
+  "w-full rounded-[13px] border-2 border-tinta/[0.12] bg-white px-4 text-[17px] text-tinta placeholder:text-fantasma focus:border-ancora focus:outline-none focus:ring-4 focus:ring-ancora-light";
+
 export const Input = React.forwardRef<
   HTMLInputElement,
   React.InputHTMLAttributes<HTMLInputElement>
 >(function Input({ className, ...props }, ref) {
   return (
-    <input
-      ref={ref}
-      className={cn(
-        "w-full rounded-xl border border-black/15 bg-white px-4 py-3 text-base text-tinta placeholder:text-black/40 focus:border-verde focus:outline-none focus:ring-2 focus:ring-verde/30",
-        className,
-      )}
-      {...props}
-    />
+    <input ref={ref} className={cn(campo, "min-h-[52px]", className)} {...props} />
   );
 });
 
@@ -60,14 +57,7 @@ export const Textarea = React.forwardRef<
   React.TextareaHTMLAttributes<HTMLTextAreaElement>
 >(function Textarea({ className, ...props }, ref) {
   return (
-    <textarea
-      ref={ref}
-      className={cn(
-        "w-full rounded-xl border border-black/15 bg-white px-4 py-3 text-base text-tinta placeholder:text-black/40 focus:border-verde focus:outline-none focus:ring-2 focus:ring-verde/30",
-        className,
-      )}
-      {...props}
-    />
+    <textarea ref={ref} className={cn(campo, "py-3.5", className)} {...props} />
   );
 });
 
@@ -84,9 +74,15 @@ export function Field({
 }) {
   return (
     <label htmlFor={htmlFor} className="block">
-      <span className="mb-1.5 block text-sm font-bold text-tinta">{label}</span>
+      <span className="mb-1.5 block font-display text-[14px] font-bold text-tinta">
+        {label}
+      </span>
       {children}
-      {hint && <span className="mt-1 block text-sm text-black/50">{hint}</span>}
+      {hint && (
+        <span className="mt-1.5 block text-[15px] leading-snug text-grafite">
+          {hint}
+        </span>
+      )}
     </label>
   );
 }
@@ -102,14 +98,17 @@ export function Alert({
   children: React.ReactNode;
 }) {
   const styles: Record<string, string> = {
-    error: "bg-erro/10 text-erro border-erro/30",
-    success: "bg-verde-light text-verde-dark border-verde/30",
-    info: "bg-black/5 text-tinta border-black/10",
+    error: "border-erro/30 bg-erro/[0.07] text-erro",
+    success: "border-ancora-line bg-ancora-light text-ancora-dark",
+    info: "border-tinta/10 bg-tinta/[0.04] text-tinta",
   };
   return (
     <div
       role={kind === "error" ? "alert" : "status"}
-      className={cn("rounded-xl border px-4 py-3 text-sm", styles[kind])}
+      className={cn(
+        "rounded-[13px] border px-4 py-3 text-[15px] leading-relaxed",
+        styles[kind],
+      )}
     >
       {children}
     </div>
