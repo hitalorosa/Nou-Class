@@ -7,14 +7,14 @@ export default function AuthLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-ancora-light px-4 py-10">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-rosa px-4 py-10">
       <Link href="/" className="mb-7">
         <Logo tamanho="lg" />
       </Link>
       <div className="w-full max-w-md rounded-xl2 border border-tinta/5 bg-white p-7 shadow-[0_2px_10px_rgba(26,26,26,.05)] sm:p-8">
         {children}
       </div>
-      <p className="mt-7 max-w-md text-center text-[15px] text-grafite">
+      <p className="mt-7 max-w-md text-center text-[15px] font-semibold text-tinta">
         A plataforma das creators Nouê.
       </p>
     </div>

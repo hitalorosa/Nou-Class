@@ -15,10 +15,10 @@ const config: Config = {
         ancora: {
           DEFAULT: "#C21B6D", // botão principal, links, progresso, rótulo do hero
           dark: "#8E1049", // hover e texto da âncora sobre fundo claro
-          light: "#FDEAF1", // aula atual, sucesso, fundo das telas de acesso
+          light: "#FCDCE9", // aula atual, sucesso — tinta rosa de verdade, não lavada
           line: "#F6C9DB", // borda de etiqueta sobre âncora-clara
         },
-        rosa: "#FE64A3", // Beijo de Rosa: marca e áreas grandes, nunca texto pequeno
+        rosa: "#EB66A0", // ROSA 1 oficial da marca. Superfície grande, nunca texto pequeno em cima
         roxo: "#643A71", // etiqueta Admin, botão Painel, capa sem imagem, conclusão
         tinta: "#1A1A1A", // títulos e corpo
         grafite: "#5C4F55", // cinza de apoio — 7,3:1 sobre branco
@@ -30,8 +30,8 @@ const config: Config = {
           ink: "#7A4E00",
         },
         erro: "#C4271C",
-        blush: "#FDF4F7", // fundo das telas de dentro (substitui o branco)
-        painel: "#F7F3F5", // fundo do admin
+        blush: "#FFFFFF", // telas de dentro: branco limpo, pro rosa aparecer no conteúdo
+        painel: "#F6F4F5", // fundo do admin: cinza neutro, o painel é ferramenta
       },
       fontFamily: {
         // Uma família só: a Satoshi da Nouê. Título e corpo se separam pelo

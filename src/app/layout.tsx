@@ -29,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className={satoshi.variable}>
-      <body className="min-h-screen bg-blush font-sans text-tinta antialiased">
+      <body className="min-h-screen bg-white font-sans text-tinta antialiased">
         <NavProgress />
         {children}
       </body>

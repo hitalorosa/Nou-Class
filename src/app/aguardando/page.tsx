@@ -16,7 +16,7 @@ export default async function AguardandoPage() {
   const primeiroNome = profile.full_name?.split(" ")[0];
 
   return (
-    <div className="min-h-screen bg-blush">
+    <div className="min-h-screen bg-white">
       <AppHeader profile={profile} />
       <main className="mx-auto flex max-w-xl flex-col items-center px-4 py-20 text-center">
         <div className="text-6xl">✦</div>

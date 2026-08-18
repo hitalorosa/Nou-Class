@@ -102,7 +102,7 @@ export default async function CatalogoPage() {
                 className="object-cover"
               />
             ) : (
-              <div className="h-full w-full bg-gradient-to-br from-rosa to-ancora-dark" />
+              <div className="h-full w-full bg-gradient-to-br from-rosa to-ancora" />
             )}
           </div>
         </div>

@@ -19,7 +19,7 @@ export function CourseCard({ course }: { course: CourseCardData }) {
       href={`/curso/${course.id}`}
       className="group flex flex-col overflow-hidden rounded-xl2 border border-tinta/10 bg-white transition-shadow hover:shadow-[0_8px_24px_rgba(26,26,26,.12)]"
     >
-      <div className="relative aspect-video w-full overflow-hidden bg-ancora-light">
+      <div className="relative aspect-video w-full overflow-hidden bg-rosa">
         {course.cover_url ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -29,7 +29,7 @@ export function CourseCard({ course }: { course: CourseCardData }) {
           />
         ) : (
           // Sem capa: o título vira a capa sobre o gradiente roxo→âncora-escura.
-          <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-roxo to-ancora-dark p-5">
+          <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-roxo to-ancora p-5">
             <span className="text-center text-[23px] font-extrabold leading-tight text-white">
               {course.title}
             </span>
