@@ -19,7 +19,7 @@ export function Logo({
   arte = "completo",
 }: {
   className?: string;
-  tamanho?: "sm" | "lg";
+  tamanho?: "sm" | "md" | "lg";
   tom?: "escuro" | "claro";
   arte?: "completo" | "reduzido";
 }) {
@@ -37,10 +37,14 @@ export function Logo({
       width={6316}
       height={1393}
       priority
-      sizes={tamanho === "lg" ? "200px" : "150px"}
+      sizes={tamanho === "lg" ? "220px" : "200px"}
       className={cn(
         "w-auto",
-        tamanho === "lg" ? "h-9 sm:h-11" : "h-[26px] sm:h-[30px]",
+        tamanho === "lg"
+          ? "h-9 sm:h-11"
+          : tamanho === "md"
+            ? "h-9 sm:h-10"
+            : "h-[26px] sm:h-[30px]",
         className,
       )}
     />

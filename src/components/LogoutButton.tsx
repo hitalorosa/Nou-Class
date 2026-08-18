@@ -7,8 +7,9 @@ import { createClient } from "@/lib/supabase/client";
 import { cn } from "@/components/ui";
 
 /**
- * Herda a cor do cabeçalho via currentColor: fica branco sobre o header rosa
- * do app e escuro sobre o header claro do admin, sem precisar de duas versões.
+ * Botão Sair dos cabeçalhos rosa (app e admin). Branco sólido de contorno,
+ * texto branco puro (5,72:1 sobre a âncora — o meio-tom anterior era
+ * ilegível), preenche de branco no hover.
  */
 export function LogoutButton({ className }: { className?: string }) {
   const router = useRouter();
@@ -27,11 +28,11 @@ export function LogoutButton({ className }: { className?: string }) {
       onClick={sair}
       disabled={loading}
       className={cn(
-        "inline-flex min-h-[44px] items-center gap-1.5 rounded-[13px] text-[16px] font-bold text-grafite opacity-100 transition-opacity hover:text-tinta disabled:opacity-50 sm:border-2 sm:border-tinta/[0.12] sm:px-4 sm:hover:border-tinta",
+        "inline-flex min-h-[44px] items-center gap-2 rounded-[13px] text-[16px] font-bold text-white transition-colors hover:text-white/80 disabled:opacity-50 sm:border-2 sm:border-white/70 sm:px-4 sm:hover:border-white sm:hover:bg-white sm:hover:text-ancora-dark",
         className,
       )}
     >
-      <LogOut size={16} /> Sair
+      <LogOut size={18} /> Sair
     </button>
   );
 }

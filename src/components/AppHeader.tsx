@@ -10,9 +10,9 @@ export function AppHeader({ profile }: { profile: Profile }) {
     // Faixa âncora sobre corpo branco (design do catálogo). text-white aqui vira
     // o currentColor que o LogoutButton herda para ficar contornado em branco.
     <header className="sticky top-0 z-20 bg-ancora text-white">
-      <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-4">
+      <div className="mx-auto flex h-20 max-w-5xl items-center justify-between px-4">
         <Link href="/" aria-label="Início">
-          <Logo tom="claro" />
+          <Logo tom="claro" tamanho="md" />
         </Link>
         <div className="flex items-center gap-3 sm:gap-[18px]">
           {profile.role === "admin" && (

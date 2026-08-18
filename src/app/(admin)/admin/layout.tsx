@@ -21,10 +21,10 @@ export default async function AdminLayout({
           LogoutButton e as abas herdam. As abas moram dentro da faixa rosa,
           com sublinhado branco em vez do âncora que usavam no header claro. */}
       <header className="bg-ancora text-white">
-        <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-4">
+        <div className="mx-auto flex h-20 max-w-5xl items-center justify-between px-4">
           <div className="flex items-center gap-3">
             <Link href="/admin" aria-label="Painel">
-              <Logo tom="claro" />
+              <Logo tom="claro" tamanho="md" />
             </Link>
             <span className="rounded-md bg-white px-2 py-1 text-[12px] font-bold uppercase tracking-[0.1em] text-roxo">
               Admin
