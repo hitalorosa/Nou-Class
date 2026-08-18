@@ -27,7 +27,7 @@ export function LogoutButton({ className }: { className?: string }) {
       onClick={sair}
       disabled={loading}
       className={cn(
-        "inline-flex min-h-[44px] items-center gap-1.5 rounded-[13px] text-[16px] font-bold text-current opacity-90 transition-opacity hover:opacity-100 disabled:opacity-50 sm:border-2 sm:border-current/30 sm:px-4 sm:hover:border-current/70",
+        "inline-flex min-h-[44px] items-center gap-1.5 rounded-[13px] text-[16px] font-bold text-grafite opacity-100 transition-opacity hover:text-tinta disabled:opacity-50 sm:border-2 sm:border-tinta/[0.12] sm:px-4 sm:hover:border-tinta",
         className,
       )}
     >

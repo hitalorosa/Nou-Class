@@ -54,22 +54,22 @@ export default async function CursoPage({
     <div>
       <Link
         href="/"
-        className="mb-5 inline-flex min-h-[44px] items-center gap-2 text-[17px] font-bold text-ancora hover:text-ancora-dark"
+        className="mb-5 inline-flex min-h-[44px] items-center gap-2 text-[17px] font-bold text-white/90 hover:text-white"
       >
         <ChevronLeft size={16} /> Voltar aos cursos
       </Link>
 
       <div className="mb-6">
-        <h1 className="text-[30px] font-extrabold leading-tight tracking-tight text-tinta sm:text-[41px]">
+        <h1 className="text-[30px] font-extrabold leading-tight tracking-tight text-white sm:text-[41px]">
           {course.title}
         </h1>
         {course.description && (
-          <p className="mt-2 max-w-2xl text-[17px] leading-relaxed text-grafite">{course.description}</p>
+          <p className="mt-2 max-w-2xl text-[17px] leading-relaxed text-white/90">{course.description}</p>
         )}
       </div>
 
       {lessons.length === 0 ? (
-        <div className="rounded-xl2 border border-dashed border-tinta/15 bg-white/60 px-6 py-16 text-center text-grafite">
+        <div className="rounded-xl2 bg-white px-6 py-16 text-center text-grafite shadow-[0_2px_10px_rgba(26,26,26,.05)]">
           Esse curso ainda não tem aulas publicadas. Volte em breve ✦
         </div>
       ) : (
