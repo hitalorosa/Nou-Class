@@ -64,27 +64,32 @@ export default async function AdminCursosPage() {
       <div className="overflow-hidden rounded-xl2 border border-tinta/10 bg-white">
         <ul className="divide-y divide-tinta/5">
           {courses.map((c, i) => (
-            <li key={c.id} className="flex items-center gap-3 px-4 py-3">
-              <div className="flex flex-col">
-                <MoveButton id={c.id} dir="up" disabled={i === 0}>
-                  <ChevronUp size={16} />
-                </MoveButton>
-                <MoveButton
-                  id={c.id}
-                  dir="down"
-                  disabled={i === courses.length - 1}
-                >
-                  <ChevronDown size={16} />
-                </MoveButton>
-              </div>
-
-              <div className="min-w-0 flex-1">
-                <div className="truncate font-bold text-tinta">{c.title}</div>
-                <div className="text-[15px] text-grafite">
-                  {c.lessons?.[0]?.count ?? 0} aula(s)
+            <li
+              key={c.id}
+              className="flex flex-col gap-3 px-4 py-4 sm:flex-row sm:items-center"
+            >
+              <div className="flex min-w-0 flex-1 items-center gap-3">
+                <div className="flex flex-col">
+                  <MoveButton id={c.id} dir="up" disabled={i === 0}>
+                    <ChevronUp size={16} />
+                  </MoveButton>
+                  <MoveButton
+                    id={c.id}
+                    dir="down"
+                    disabled={i === courses.length - 1}
+                  >
+                    <ChevronDown size={16} />
+                  </MoveButton>
+                </div>
+                <div className="min-w-0 flex-1">
+                  <div className="truncate font-bold text-tinta">{c.title}</div>
+                  <div className="text-[15px] text-grafite">
+                    {c.lessons?.[0]?.count ?? 0} aula(s)
+                  </div>
                 </div>
               </div>
 
+              <div className="flex flex-wrap items-center gap-2 sm:gap-3">
               {c.is_published ? (
                 <span className="inline-flex items-center gap-1.5 rounded-full border border-ancora-line bg-ancora-light px-3 py-1.5 text-[15px] font-bold text-ancora-dark">
                   ✓ Publicado
@@ -122,6 +127,7 @@ export default async function AdminCursosPage() {
                   <Trash2 size={16} />
                 </ConfirmSubmit>
               </form>
+              </div>
             </li>
           ))}
         </ul>

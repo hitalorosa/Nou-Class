@@ -31,12 +31,6 @@ export default async function AdminLayout({
             </span>
           </div>
           <div className="flex items-center gap-3 sm:gap-[18px]">
-            <Link
-              href="/"
-              className="hidden text-[16px] font-bold text-white/90 hover:text-white sm:inline"
-            >
-              Ver como aluna
-            </Link>
             {primeiroNome && (
               <span className="hidden text-[17px] text-white/90 sm:inline">
                 Oi,{" "}
@@ -49,6 +43,9 @@ export default async function AdminLayout({
         <nav className="mx-auto flex max-w-5xl gap-6 px-4">
           <AdminTab href="/admin/usuarios">Usuárias</AdminTab>
           <AdminTab href="/admin/cursos">Cursos</AdminTab>
+          {/* Sai do painel; fica na barra pra aparecer também no celular, onde
+              não cabia no topo. */}
+          <AdminTab href="/">Ver como aluna</AdminTab>
         </nav>
       </header>
       <main className="mx-auto max-w-5xl px-4 py-8">{children}</main>
