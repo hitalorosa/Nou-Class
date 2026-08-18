@@ -1,9 +1,5 @@
 import { cn } from "@/components/ui";
 
-/** Estrela de oito pontas do wordmark, reaproveitada como marca de conclusão. */
-const ESTRELA_CLIP =
-  "polygon(50% 0%,59% 41%,100% 50%,59% 59%,50% 100%,41% 59%,0% 50%,41% 41%)";
-
 /** Percentual inteiro de aulas assistidas. Curso sem aula é 0, nunca NaN. */
 export function percentual(done: number, total: number): number {
   if (total <= 0) return 0;
@@ -51,14 +47,23 @@ export function ProgressBar({
   );
 }
 
-/** Estrela sólida usada como marca de "concluído". */
+/**
+ * Estrela de quatro pontas — a forma da marca, usada como selo de "concluído".
+ *
+ * Redesenhada em SVG em vez de usar o arquivo da marca: aqui ela aparece a
+ * 20px, tamanho em que o contorno duplo do logotipo original fecha e some.
+ * Herda a cor do texto, então serve em roxo no card e em branco sobre fundo
+ * cheio sem virar dois arquivos.
+ */
 export function Estrela({ className }: { className?: string }) {
   return (
-    <span
+    <svg
+      viewBox="0 0 100 100"
       aria-hidden
-      className={cn("inline-block bg-current", className)}
-      style={{ clipPath: ESTRELA_CLIP }}
-    />
+      className={cn("inline-block fill-current", className)}
+    >
+      <path d="M50 2 C 56 32, 68 44, 98 50 C 68 56, 56 68, 50 98 C 44 68, 32 56, 2 50 C 32 44, 44 32, 50 2 Z" />
+    </svg>
   );
 }
 
