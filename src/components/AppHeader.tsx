@@ -7,25 +7,25 @@ export function AppHeader({ profile }: { profile: Profile }) {
   const primeiroNome = profile.full_name?.split(" ")[0];
 
   return (
-    // Cabeçalho branco, para separar do corpo rosa. É a faixa neutra entre a
-    // barra do navegador e o mar de âncora que vem abaixo.
-    <header className="sticky top-0 z-20 border-b border-tinta/[0.06] bg-white">
+    // Faixa âncora sobre corpo branco (design do catálogo). text-white aqui vira
+    // o currentColor que o LogoutButton herda para ficar contornado em branco.
+    <header className="sticky top-0 z-20 bg-ancora text-white">
       <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-4">
         <Link href="/" aria-label="Início">
-          <Logo />
+          <Logo arte="reduzido" />
         </Link>
         <div className="flex items-center gap-3 sm:gap-[18px]">
           {profile.role === "admin" && (
             <Link
               href="/admin"
-              className="inline-flex min-h-[44px] items-center rounded-[13px] bg-roxo px-4 text-[16px] font-bold text-white transition-opacity hover:opacity-90"
+              className="inline-flex min-h-[44px] items-center rounded-[13px] bg-white px-4 text-[16px] font-bold text-ancora-dark transition-opacity hover:opacity-90"
             >
               Painel
             </Link>
           )}
           {primeiroNome && (
-            <span className="hidden text-[17px] text-grafite sm:inline">
-              Oi, <strong className="font-semibold text-tinta">{primeiroNome}</strong>
+            <span className="hidden text-[17px] text-white/90 sm:inline">
+              Oi, <strong className="font-semibold text-white">{primeiroNome}</strong>
             </span>
           )}
           <LogoutButton />

@@ -108,12 +108,12 @@ export default async function CatalogoPage() {
         </div>
       </div>
 
-      <h2 className="mb-6 text-[23px] font-bold text-white md:text-[30px]">
+      <h2 className="mb-6 text-[23px] font-bold text-tinta md:text-[30px]">
         Cursos
       </h2>
 
       {courses.length === 0 ? (
-        <div className="rounded-xl2 bg-white px-6 py-16 text-center shadow-[0_2px_10px_rgba(26,26,26,.05)]">
+        <div className="rounded-xl2 border border-dashed border-tinta/15 bg-tinta/[0.02] px-6 py-16 text-center">
           <div className="text-5xl">✦</div>
           <p className="mt-4 text-[19px] font-bold text-tinta">
             Os cursos estão chegando!

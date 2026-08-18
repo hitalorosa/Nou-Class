@@ -2,38 +2,45 @@ import Image from "next/image";
 import { cn } from "@/components/ui";
 
 /**
- * Wordmark oficial da Nouê Estrelas — o arquivo da marca, não uma recriação.
+ * Wordmark oficial da Nouê Estrelas — arquivos da marca, não recriação.
  *
- * Duas versões, escolhidas por contraste e não por gosto:
+ * Três combinações usadas no app:
+ * - completo escuro: login e telas claras (17,78:1)
+ * - completo claro: sobre a âncora, onde a versão preta renderia 3:1
+ * - reduzido claro: o cabeçalho rosa, onde "NOUÊ ESTRELAS" inteiro não cabe
+ *   nos 30px de altura sem fechar as letras
  *
- * - `escuro` (padrão): a preta, sobre fundo claro. 17,78:1.
- * - `claro`: a branca, sobre a âncora #C21B6D. Ali a preta renderia só
- *   3,1:1 e o traço fino do "NOUÊ" sumiria; a branca rende 5,72:1.
- *
- * As variantes rosa da marca não entram aqui: rendem no máximo 3:1 sobre
- * branco, e o logo no app é sempre pequeno (26px no cabeçalho). Elas ficam
- * no Drive, em IDENTIDADE VISUAL/LOGO/WEBP, junto com ROXO e as verticais.
+ * As variantes rosa e roxa ficam no Drive (IDENTIDADE VISUAL/LOGO/WEBP).
  */
 export function Logo({
   className,
   tamanho = "sm",
   tom = "escuro",
+  arte = "completo",
 }: {
   className?: string;
   tamanho?: "sm" | "lg";
   tom?: "escuro" | "claro";
+  arte?: "completo" | "reduzido";
 }) {
+  const src =
+    arte === "reduzido"
+      ? "/marca/redu-white.webp"
+      : tom === "claro"
+        ? "/marca/hori-white.webp"
+        : "/marca/hori-black.webp";
+
   return (
     <Image
-      src={tom === "claro" ? "/marca/hori-white.webp" : "/marca/hori-black.webp"}
+      src={src}
       alt="Nouê Estrelas"
       width={6316}
       height={1393}
       priority
-      sizes={tamanho === "lg" ? "200px" : "120px"}
+      sizes={tamanho === "lg" ? "200px" : "150px"}
       className={cn(
         "w-auto",
-        tamanho === "lg" ? "h-9 sm:h-11" : "h-[26px]",
+        tamanho === "lg" ? "h-9 sm:h-11" : "h-[26px] sm:h-[30px]",
         className,
       )}
     />

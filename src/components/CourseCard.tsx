@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ProgressBar, percentual, Estrela } from "@/components/Progress";
+import { ProgressBar, percentual } from "@/components/Progress";
 
 export type CourseCardData = {
   id: string;
@@ -57,8 +57,8 @@ export function CourseCard({ course }: { course: CourseCardData }) {
             <div className="flex flex-col gap-2.5">
               <div className="flex items-center justify-between gap-3">
                 {concluido ? (
-                  <span className="flex items-center gap-2 text-[16px] font-bold text-roxo">
-                    <Estrela className="h-5 w-5" /> Concluído
+                  <span className="flex items-center gap-2 text-[16px] font-bold text-ancora">
+                    ✓ Concluído
                   </span>
                 ) : (
                   <span className="flex items-center gap-2 text-[16px] font-bold text-ancora">

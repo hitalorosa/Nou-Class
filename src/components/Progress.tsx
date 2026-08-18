@@ -22,7 +22,6 @@ export function ProgressBar({
 }) {
   if (total <= 0) return null;
   const pct = percentual(done, total);
-  const completo = done >= total;
 
   return (
     <div
@@ -37,33 +36,10 @@ export function ProgressBar({
       )}
     >
       <div
-        className={cn(
-          "h-full rounded-full transition-[width] duration-500 ease-out",
-          completo ? "bg-roxo" : "bg-ancora",
-        )}
+        className="h-full rounded-full bg-ancora transition-[width] duration-500 ease-out"
         style={{ width: `${pct}%` }}
       />
     </div>
-  );
-}
-
-/**
- * Estrela de quatro pontas — a forma da marca, usada como selo de "concluído".
- *
- * Redesenhada em SVG em vez de usar o arquivo da marca: aqui ela aparece a
- * 20px, tamanho em que o contorno duplo do logotipo original fecha e some.
- * Herda a cor do texto, então serve em roxo no card e em branco sobre fundo
- * cheio sem virar dois arquivos.
- */
-export function Estrela({ className }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 100 100"
-      aria-hidden
-      className={cn("inline-block fill-current", className)}
-    >
-      <path d="M50 2 C 56 32, 68 44, 98 50 C 68 56, 56 68, 50 98 C 44 68, 32 56, 2 50 C 32 44, 44 32, 50 2 Z" />
-    </svg>
   );
 }
 
@@ -90,7 +66,7 @@ export function ProgressSummary({
       <span
         className={cn(
           "text-[41px] font-extrabold leading-none",
-          completo ? "text-roxo" : "text-ancora",
+          completo ? "text-ancora-dark" : "text-ancora",
         )}
       >
         {pct}%
